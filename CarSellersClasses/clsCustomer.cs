@@ -5,13 +5,13 @@ namespace CarSellersClasses
 
 	public class clsCustomer
 	{
-		private String name;
-		private String surname;
-		private DateTime DOB;
-		private int PhoneNumber;
-		private String email;
-		private String Address;
-		private Boolean toDelete;
+		public String name;
+		public String surname;
+		public DateTime DOB;
+		public int PhoneNumber;
+		public String email;
+		public String Address;
+		public Boolean toDelete;
 
 		public clsCustomer()
 		{
