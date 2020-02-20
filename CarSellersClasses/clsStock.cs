@@ -9,5 +9,10 @@ namespace CarSellersClasses
         public double price;
         public bool sold;
         public string modelName;
+
+        public string find(int we)
+        {
+            return "sorted";
+        }
     }
 }
