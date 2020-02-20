@@ -75,6 +75,49 @@ namespace CarSellersTesting
 
         #endregion
 
+        #region FindMethodTests
+
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsCustomer newCustomer = new clsCustomer();
+            Boolean found = false;
+            Int32 CustomerNo = 1;
+            found = newCustomer.Find(CustomerNo);
+            Assert.IsTrue(found);
+        }
+
+        [TestMethod]
+        public void TestAddressNoFound()
+        {
+            clsCustomer newCustomer = new clsCustomer();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 CustomerNo = 1;
+            found = newCustomer.Find(CustomerNo);
+            if (newCustomer.CustomerID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsCustomer newCustomer = new clsCustomer();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 CustomerNo = 1;
+            found = newCustomer.Find(CustomerNo);
+            if (newCustomer.DOB != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        #endregion
 
     }
 }
