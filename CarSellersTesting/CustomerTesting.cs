@@ -7,12 +7,17 @@ namespace CarSellersTesting
     [TestClass]
     public class CustomerTesting
     {
+
+        #region InstanceTests
         [TestMethod]
         public void InstanceOk()
         {
             clsCustomer newCustomer = new clsCustomer();
             Assert.IsNotNull(newCustomer);
         }
+        #endregion
+
+        #region PropertyOkTests
 
         [TestMethod]
         public void NamePropertyOK()
@@ -68,6 +73,8 @@ namespace CarSellersTesting
             Assert.AreEqual(newCustomer.toDelete, delete);
         }
 
-		
-	}
+        #endregion
+
+
+    }
 }
