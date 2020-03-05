@@ -16,8 +16,18 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        ID :
+        <asp:TextBox ID="IDTextBox" runat="server"></asp:TextBox>
+        <br />
+        <br />
         Name :
-        <asp:Label ID="NameLabel" runat="server" Text="Bob Smith"></asp:Label>
+        <asp:TextBox ID="NameTextBox" runat="server" Width="246px"></asp:TextBox>
+        <br />
+        <br />
+        Surname : <asp:TextBox ID="SurnameTextBox" runat="server" Width="281px"></asp:TextBox>
+        <br />
+        <br />
+        Email : <asp:TextBox ID="EmailTextBox" runat="server" Width="346px"></asp:TextBox>
         <br />
         <p>
             <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />

@@ -98,7 +98,17 @@ namespace CarSellersClasses
 
         public bool Find(int CustomerNo)
         {
-            return true;
+            //clsDataConnection Database = new clsDataConnection();
+            //Database.AddParameter("@CustomerId", CustomerNo);
+            //Database.Execute("sproc_CustomerTable_FilterByID");
+            if (true)//Database.Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 	}

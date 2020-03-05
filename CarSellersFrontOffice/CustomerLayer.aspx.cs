@@ -24,8 +24,13 @@ public partial class CustomerLayer : System.Web.UI.Page
     protected void OkButton_Click(object sender, EventArgs e)
     {
         clsCustomer newCustomer = new clsCustomer();
-        newCustomer.name = NameLabel.Text;
+        newCustomer.CustomerID = Convert.ToInt32(IDTextBox.Text);
+        newCustomer.name = NameTextBox.Text;
+        newCustomer.surname = SurnameTextBox.Text;
+        newCustomer.email = EmailTextBox.Text;
         Session["newCustomer"] = newCustomer;
         Response.Redirect("CustomerViewer.aspx");
+        
     }
+
 }
