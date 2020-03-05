@@ -15,7 +15,19 @@ public partial class CustomerViewer : System.Web.UI.Page
         IDAppearBox.Text = Convert.ToString(newCustomer.CustomerID);
         NameAppearBox.Text = newCustomer.name;
         SurnameAppearBox.Text = newCustomer.surname;
+        MobileAppearBox.Text = Convert.ToString(newCustomer.PhoneNumber);
         EmailAppearBox.Text = newCustomer.email;
+        AddressAppearBox.Text = newCustomer.Address;
+        DateAppearBox.Text = Convert.ToString(newCustomer.DOB);
+        
+        if (newCustomer.toDelete == true)
+        {
+            DeleteCustomerLabel.BackColor = System.Drawing.Color.Green;
+        }
+        else
+        {
+            DeleteCustomerLabel.BackColor = System.Drawing.Color.Red;
+        }
     }
 
 

@@ -27,7 +27,11 @@ public partial class CustomerLayer : System.Web.UI.Page
         newCustomer.CustomerID = Convert.ToInt32(IDTextBox.Text);
         newCustomer.name = NameTextBox.Text;
         newCustomer.surname = SurnameTextBox.Text;
+        newCustomer.PhoneNumber = Convert.ToInt32(MobileTextBox.Text);
         newCustomer.email = EmailTextBox.Text;
+        newCustomer.Address = AddressTextBox.Text;
+        newCustomer.DOB = DateTime.Parse(DateTextBox.Text);
+        newCustomer.toDelete = DelCustomer.Checked;
         Session["newCustomer"] = newCustomer;
         Response.Redirect("CustomerViewer.aspx");
         

@@ -24,10 +24,25 @@
         <asp:TextBox ID="NameTextBox" runat="server" Width="246px"></asp:TextBox>
         <br />
         <br />
-        Surname : <asp:TextBox ID="SurnameTextBox" runat="server" Width="281px"></asp:TextBox>
+        Surname :
+        <asp:TextBox ID="SurnameTextBox" runat="server" Width="281px"></asp:TextBox>
+        <br />
+        <br />
+        Mobile Number :
+        <asp:TextBox ID="MobileTextBox" runat="server" Width="252px"></asp:TextBox>
         <br />
         <br />
         Email : <asp:TextBox ID="EmailTextBox" runat="server" Width="346px"></asp:TextBox>
+        <br />
+        <br />
+        Address :
+        <asp:TextBox ID="AddressTextBox" runat="server" Width="357px"></asp:TextBox>
+        <br />
+        <br />
+        Date of birth : <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        Delete me? :<asp:CheckBox ID="DelCustomer" runat="server" />
         <br />
         <p>
             <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />
