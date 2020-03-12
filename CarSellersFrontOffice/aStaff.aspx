@@ -9,19 +9,21 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            FirstName<asp:Label ID="StaffFirstNameLabel" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblStaffID" runat="server" Text="StaffID"></asp:Label>
+            <asp:TextBox ID="txtStaffID" runat="server" ClientIDMode="AutoID"></asp:TextBox>
             <br />
-            Surname<asp:Label ID="StaffSurnameLabel" runat="server" Text="Label"></asp:Label>
+            FirstName<asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
             <br />
-            DOB<asp:Label ID="StaffDOBLabel" runat="server" Text="Label"></asp:Label>
+            Surname<asp:TextBox ID="SurnameTextBox" runat="server"></asp:TextBox>
             <br />
-            MobileNumber<asp:Label ID="StaffMobileNumberLabel" runat="server" Text="Label"></asp:Label>
+            DOB<asp:TextBox ID="DOBTextBox" runat="server"></asp:TextBox>
             <br />
-            Position<asp:Label ID="StaffPositionLabel" runat="server" Text="Label"></asp:Label>
+            MobileNumber<asp:TextBox ID="MobNumbTextBox" runat="server"></asp:TextBox>
             <br />
-            InOffice<asp:Label ID="StaffInOfficeLabel" runat="server" Text="Label"></asp:Label>
+            Position<asp:TextBox ID="PosTextBox" runat="server"></asp:TextBox>
+            <br />
+            InOffice<asp:CheckBox ID="IOCheckBox" runat="server" />
         </div>
-        <asp:Label ID="StaffErrorLabel" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:Button ID="StaffOKButton" runat="server" OnClick="StaffOKButton_Click" Text="OK" />
         <asp:Button ID="StaffCancelButton" runat="server" Text="Cancel" />

@@ -9,6 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            FirstNam Typed:
+            <asp:TextBox ID="txtFirstN" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>

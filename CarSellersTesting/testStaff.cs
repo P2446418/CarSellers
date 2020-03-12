@@ -8,29 +8,35 @@ namespace CarSellersTesting
     public class testStaff
     {
         [TestMethod]
+        public void TestFirstNameFound()
+        {
+            clsStaff aStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            string FirstName = "Jeff";
+            Found = aStaff.Find(FirstName);
+            if (aStaff.FirstName != "Jeff")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
         public void InstanceOK()
         {
             clsStaff aStaff = new clsStaff();
             Assert.IsNotNull(aStaff);
         }
 
-        [TestMethod]
-        public void ActiveStaffOK()
-        {
-            clsStaff aStaff = new clsStaff();
-            Boolean TestData = true;
-            aStaff.Active = TestData;
-            Assert.AreEqual(aStaff.Active, TestData);
-        }
-
-        [TestMethod]
-        public void DateAddedStaffOK()
-        {
-            clsStaff aStaff = new clsStaff();
-            DateTime TestData = DateTime.Now.Date;
-            aStaff.DateAdded = TestData;
-            Assert.AreEqual(aStaff.DateAdded, TestData);
-        }
+        //[TestMethod]
+        //public void DOBStaffOK()
+        //{
+           // clsStaff aStaff = new clsStaff();
+           // DateTime TestData = DateTime(01,01,1980);
+           // aStaff.DOB = TestData;
+           // Assert.AreEqual(aStaff.DOB, TestData);
+        //}
 
         [TestMethod]
         public void StaffFirstNameOK()
@@ -58,5 +64,34 @@ namespace CarSellersTesting
             aStaff.MobileNumber = TestData;
             Assert.AreEqual(aStaff.MobileNumber, TestData);
         }
+
+        [TestMethod]
+        public void StaffPositionOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            string TestData = "Sales";
+            aStaff.Position = TestData;
+            Assert.AreEqual(aStaff.Position, TestData);
+        }
+
+        [TestMethod]
+        public void InOfficeOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            Boolean TestData = true;
+            aStaff.InOffice = TestData;
+            Assert.AreEqual(aStaff.InOffice, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            Boolean Found = false;
+            string FirstName = "Jeff";
+            Found = aStaff.Find(FirstName);
+            Assert.IsTrue(Found);
+        }
+
     }
 }
