@@ -97,12 +97,24 @@ namespace CarSellersClasses
         }
 
         public bool Find(int CustomerNo)
-        {
-            //clsDataConnection Database = new clsDataConnection();
-            //Database.AddParameter("@CustomerId", CustomerNo);
-            //Database.Execute("sproc_CustomerTable_FilterByID");
-            if (true)//Database.Count == 1)
+        {   
+            //create an instance of the data connection
+            clsDataConnection Database = new clsDataConnection();
+            //add the parameter for the customer ID to search for
+            Database.AddParameter("@CustomerId", CustomerNo);
+            //execute stored proc
+            Database.Execute("sproc_CustomerTable_FilterByID");
+            //if one record is found then retrieve it
+            if (Database.Count == 1)
             {
+                mCustomerID = Convert.ToInt32(Database.DataTable.Rows[0]["CustomerId"]);
+                mName = Convert.ToString(Database.DataTable.Rows[0]["FirstName"]);
+                mSurname = Convert.ToString(Database.DataTable.Rows[0]["SurName"]);
+                mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DateOfBirth"]));
+                mNumber = Convert.ToInt32(Database.DataTable.Rows[0]["PhoneNumber"]);
+                mEmail = Convert.ToString(Database.DataTable.Rows[0]["Email"]);
+                mAddress = Convert.ToString(Database.DataTable.Rows[0]["Address"]);
+                mDelete = Convert.ToBoolean(Database.DataTable.Rows[0]["toDelete"]);
                 return true;
             }
             else
