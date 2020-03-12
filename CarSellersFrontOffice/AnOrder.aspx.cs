@@ -18,7 +18,7 @@ public partial class AnOrder : System.Web.UI.Page
 
     }
 
-    protected void okBtn_Click(object sender, EventArgs e)
+    protected void OkBtn_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
         AnOrder.orderID = txtOrderID.Text;

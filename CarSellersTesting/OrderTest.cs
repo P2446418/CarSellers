@@ -8,7 +8,7 @@ namespace CarSellersTesting
     public class OrderTest
     {
         [TestMethod]
-        public void InstanceOK() { 
+        public void InstanceOK() {
             clsOrder anOrder = new clsOrder();
             Assert.IsNotNull(anOrder);
         }
@@ -66,6 +66,46 @@ namespace CarSellersTesting
             double test_data = 15000.00;
             new_order.price = test_data;
             Assert.AreEqual(new_order.price, test_data);
+        }
+
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsOrder new_order = new clsOrder();
+            Boolean Found = false;
+            Int32 orderID = 1;
+            Found = new_order.Find(orderID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 15;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.orderID != 15)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 15;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.dateOrdered != Convert.ToDateTime("12/03/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }

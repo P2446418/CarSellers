@@ -46,21 +46,20 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
             <asp:Label ID="Label1" runat="server" Text="Order ID"></asp:Label>
-            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox></div>
+            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox> <br />
         <asp:Label ID="Label2" runat="server" Text="Number Plate"></asp:Label>
-            <input id="number_plate" type="text" name="txtNumberPlate" /><p>
+            <asp:TextBox ID="txtNumberPlate" runat="server"></asp:TextBox> <br />
             <asp:Label ID="Label3" runat="server" Text="Customer ID"></asp:Label>
-            <input id="customer_id" type="text" name="txtCustID" /></p>
+            <asp:TextBox ID="txtCustID" runat="server"></asp:TextBox> <br />
         <asp:Label ID="Label4" runat="server" Text="Quantity"></asp:Label>
-        <input id="quantity" type="text" name="txtQuantity" /><br />
+        <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox><br />
         <asp:Label ID="Label5" runat="server" Text="Order Date"></asp:Label>
-        <input id="order_date" type="text" name="txtOrderDate" /><br />
+        <asp:TextBox ID="txtOrderDate" runat="server"></asp:TextBox><br />
         <asp:Label ID="Label6" runat="server" Text="Price"></asp:Label>
-        <input id="price" type="text" name="txtPrice" /><br />
+        <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox><br />
         <br />
-        <asp:Button ID="btnOk" runat="server" OnClick ="btnOk_Click" Height="26px" Text="OK" Width="38px" />
+        <asp:Button ID="OkBtn" runat="server" OnClick ="OkBtn_Click" Height="26px" Text="OK" Width="38px" />
         <asp:Button ID="cancel_button" runat="server" style="margin-left: 24px" Text="Cancel" />
     </form>
     </body>
