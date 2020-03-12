@@ -12,6 +12,7 @@
             <br />
             Typed in ID :
             <asp:TextBox ID="IDAppearBox" runat="server"></asp:TextBox>
+            <asp:Button ID="FindButton" runat="server" OnClick="FindButton_Click" Text="Search" />
         </p>
         <p>
             Typed in Name :
@@ -38,7 +39,7 @@
         </p>
         <p>
             Wants to delete? :
-            <asp:Label ID="DeleteCustomerLabel" runat="server" Text="---" BackColor="#00CC00"></asp:Label>
+            <asp:Label ID="DeleteCustomerLabel" runat="server" Text="---" BackColor="White"></asp:Label>
         </p>
         <div>
         </div>
