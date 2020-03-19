@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CarSellersClasses
 {
@@ -81,20 +82,6 @@ namespace CarSellersClasses
 		public String getName() { return name; }
 
         //find method
-       public bool FindOriginal(int CustomerNo)
-        {
-            mCustomerID = 1;
-            mName = "bob";
-            mSurname = "Smith";
-            mNumber = 12345;
-            mEmail = "bobsmith@example.com";
-            mAddress = "123 example street";
-            mDOB = Convert.ToDateTime("16/09/2015");
-            mDelete = false;
-
-            //always return true
-            return true;
-        }
 
         public bool Find(int CustomerNo)
         {
@@ -126,6 +113,86 @@ namespace CarSellersClasses
                 return false;
             }
         }
+
+        //validation method
+        //just simple sanitation and filtering, returns error message if any
+        public String Valid(String CName, String CSurname, String CDOB, String CNumber, String CEmail)
+        {
+            String Error = "";
+            //mName
+            Error = ValidateNames(CName, "FirstName");
+            //mSurname
+            //Error += "\n" + ValidateName(CSurname, "Surname");
+            //mDob, check for datetime format
+            //mNumber, check if actual number, no letters
+            //mEmail, check if email format
+            return Error;
+        }
+
+        public String ValidateNames(String nameString, String field)
+        {
+            String outcome = "";
+            //check name length
+            if (nameString.Length == 0)
+            {
+                outcome = "[!] " + field + " is 0 length";
+            }
+            //else if (nameString.Length > 25)
+            //{
+            //    outcome = "[!] " + field + " is too long";
+            //}
+
+            //check for numbers within string
+
+            //check for symbols, exclude ' and - though
+            //this is done by checking ascii values 65-90 and 97-122
+            // ' has value of 96 and - has value of 45
+
+            Boolean numbers = false;
+            Boolean symbols = false;
+
+            foreach (char letter in nameString)
+            {
+                
+                if ((letter >= 48) && (letter <= 57))
+                {
+                    numbers = true;
+                }
+                else if (!(letter >= 65) && !(letter <= 90))
+                {
+                    symbols = true;
+                }
+                else if (!(letter >= 97) && !(letter <= 122))
+                {
+                    symbols = true;
+                }
+
+                if ((letter == 96) || (letter == 45))
+                {
+                    symbols = false;
+                }
+
+                if (symbols || numbers)
+                {
+                    break;
+                }
+
+            }
+
+            if (numbers == true)
+            {
+                outcome += "\n[!] " + field + " contains numbers";
+            }
+
+            if (symbols == true)
+            {
+                outcome += "\n[!] " + field + " contains invalid symbols";
+            }
+
+            return outcome;
+        }
+
+
 
 	}
 }
