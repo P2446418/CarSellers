@@ -107,5 +107,20 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void TestNumberPlateFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 15;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.numberPlate !=  "AB12 DEF")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
