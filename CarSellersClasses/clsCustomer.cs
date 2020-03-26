@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace CarSellersClasses
 {
@@ -122,10 +123,13 @@ namespace CarSellersClasses
             //mName
             Error = ValidateNames(CName, "FirstName");
             //mSurname
-            //Error += "\n" + ValidateName(CSurname, "Surname");
+            Error += ValidateNames(CSurname, "SurName");
             //mDob, check for datetime format
+            Error += ValidateDateTime(CDOB, "DateOfBirth");
             //mNumber, check if actual number, no letters
+            Error += ValidateNumber(CNumber, "PhoneNumber");
             //mEmail, check if email format
+            Error += ValidateEmail(CEmail, "Email");
             return Error;
         }
 
@@ -135,7 +139,7 @@ namespace CarSellersClasses
             //check name length
             if (nameString.Length == 0)
             {
-                outcome = "[!] " + field + " is 0 length";
+                outcome = "[!] " + field + " is 0 length\n";
             }
             //else if (nameString.Length > 25)
             //{
@@ -181,18 +185,91 @@ namespace CarSellersClasses
 
             if (numbers == true)
             {
-                outcome += "\n[!] " + field + " contains numbers";
+                outcome += "[!] " + field + " contains numbers\n";
             }
 
             if (symbols == true)
             {
-                outcome += "\n[!] " + field + " contains invalid symbols";
+                outcome += "[!] " + field + " contains invalid symbols\n";
             }
 
             return outcome;
         }
 
+        public String ValidateDateTime(String date, String field)
+        {
+            //Customer SQL table is using Date data type, so format required is YYYY/MM/DD
+            //C# datetime uses DD/MM/YY HH/MM/SS
+            //can be parsed in different format
+            String error = "";
+            //first check for valid characters, numbers only
+            //performs numerical operation, letters will cause exception
+            Boolean letters = false;
+            foreach (char letter in date)
+            {
+                try
+                {
+                    int temp = Convert.ToInt32(letter.ToString()) % 2;
+                }
+                catch (ArithmeticException e)
+                {
+                    //check for / - :, common symbols in dates
+                    letters = true;
+                    break;
+                }
+            }
 
+            if (letters = true)
+            {
+                error += "[!] A date cannot contain letters or invalid characters\n";
+            }
+            else
+            {
+                //parse
+                DateTime tempDate = DateTime.Parse(date);
+                String correctFormat = tempDate.ToString("yyyy-MM-dd");
+
+                //check if correct format, length etc.
+                if (date != correctFormat) { error += "[!] Date is not in correct format\n"; }
+            }
+
+            return error;
+        }
+
+        public String ValidateNumber(String NumberString, String field)
+        {
+            String error = "";
+            try
+            {
+                int testNumber = Convert.ToInt32(NumberString.Replace(' ', '1'));
+
+            }
+            catch (InvalidCastException e)
+            {
+                error = "[!] Phone number cannot contain letters or invalid characters\n";
+            }
+            return error;
+        }
+
+        public String ValidateEmail(String emailString, String field)
+        {
+            String error = "";
+
+            if (emailString.Contains(" "))
+            {
+                error += "[!] Email cannot contain spaces\n";
+            }
+
+            //just use regex * @ * . *
+            //"^[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z-.]$"
+            Regex EmailCheck = new Regex("^[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z-.]$");
+            if (!EmailCheck.IsMatch(emailString))
+            {
+                error += "[!] Email is not correct format\n";
+            }
+
+            return error;
+        }
 
 	}
 }

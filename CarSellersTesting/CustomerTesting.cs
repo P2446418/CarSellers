@@ -91,6 +91,12 @@ namespace CarSellersTesting
 
         #endregion
 
+
+    }
+
+    [TestClass]
+    public class CustomerValidationTesting
+    {
         #region ValidationTests
 
         //test data
@@ -99,7 +105,7 @@ namespace CarSellersTesting
         String TDOB = "19/03/20";
         String TNumber = "1234567890";
         String TEmail = "bob@example.com";
-        
+
 
         [TestMethod]
         public void ValidMethodOk()
@@ -198,8 +204,75 @@ namespace CarSellersTesting
 
         #endregion
 
+        #region DateValidationTests
+
+        [TestMethod]
+        public void DateTimeLettersCheck()
+        {
+            //test date time with letters in it  
+        }
+
+        [TestMethod]
+        public void DateTimeSymbolsCheck()
+        {
+            //test date time with invalid symbols in it
+        }
+
+        [TestMethod]
+        public void DateTimeValidCheck()
+        {
+            //test valid date time examples
+        }
+
+        #endregion
+
+        #region NumberValidationTests
+
+        [TestMethod]
+        public void NumberLettersCheck()
+        {
+            //test number with letters in it, spaces don't matter
+        }
+
+        [TestMethod]
+        public void NumberSymbolsCheck()
+        {
+            //test number with symbols in it
+        }
+
+        [TestMethod]
+        public void NumberValidTest()
+        {
+            //test valid numbers
+        }
+
+        [TestMethod]
+        public void NumberLengthTest()
+        {
+            //test boundaries
+        }
+
+        #endregion
+
+        #region EmailValidationTests
+
+        [TestMethod]
+        public void EmailInvalidTests()
+        {
+            //examples of invalid emails
+        }
+
+        [TestMethod]
+        public void EmailValidTests()
+        {
+            //examples of valid emails
+        }
+
         #endregion
 
 
+        #endregion
+
     }
+
 }
