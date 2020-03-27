@@ -125,133 +125,79 @@ namespace CarSellersClasses
             //mSurname
             Error += ValidateNames(CSurname, "SurName");
             //mDob, check for datetime format
-            Error += ValidateDateTime(CDOB, "DateOfBirth");
+            Error += ValidateDateTime(CDOB);
             //mNumber, check if actual number, no letters
-            Error += ValidateNumber(CNumber, "PhoneNumber");
+            Error += ValidateNumber(CNumber);
             //mEmail, check if email format
-            Error += ValidateEmail(CEmail, "Email");
+            Error += ValidateEmail(CEmail);
             return Error;
         }
 
         public String ValidateNames(String nameString, String field)
         {
-            String outcome = "";
-            //check name length
-            if (nameString.Length == 0)
+            String error = "";
+
+            if ((nameString.Length == 0) || (nameString == null))
             {
-                outcome = "[!] " + field + " is 0 length\n";
+                error += field + " cannot be null\n";
             }
-            //else if (nameString.Length > 25)
-            //{
-            //    outcome = "[!] " + field + " is too long";
-            //}
-
-            //check for numbers within string
-
-            //check for symbols, exclude ' and - though
-            //this is done by checking ascii values 65-90 and 97-122
-            // ' has value of 96 and - has value of 45
-
-            Boolean numbers = false;
-            Boolean symbols = false;
-
-            foreach (char letter in nameString)
+            if (nameString.Length > 25)
             {
-                
-                if ((letter >= 48) && (letter <= 57))
-                {
-                    numbers = true;
-                }
-                else if (!(letter >= 65) && !(letter <= 90))
-                {
-                    symbols = true;
-                }
-                else if (!(letter >= 97) && !(letter <= 122))
-                {
-                    symbols = true;
-                }
-
-                if ((letter == 96) || (letter == 45))
-                {
-                    symbols = false;
-                }
-
-                if (symbols || numbers)
-                {
-                    break;
-                }
-
+                error += field + " cannot be more than 25 characters\n";
             }
 
-            if (numbers == true)
+            Regex NameCheck = new Regex("[a-zA-z- '-]");
+            if (!(NameCheck.IsMatch(nameString)))
             {
-                outcome += "[!] " + field + " contains numbers\n";
+                error += "Name contains invalid characters, numbers or symbols\n";
             }
 
-            if (symbols == true)
-            {
-                outcome += "[!] " + field + " contains invalid symbols\n";
-            }
-
-            return outcome;
+            return error;
         }
 
-        public String ValidateDateTime(String date, String field)
+        public String ValidateDateTime(String date)
         {
             //Customer SQL table is using Date data type, so format required is YYYY/MM/DD
             //C# datetime uses DD/MM/YY HH/MM/SS
             //can be parsed in different format
             String error = "";
-            //first check for valid characters, numbers only
-            //performs numerical operation, letters will cause exception
-            Boolean letters = false;
-            foreach (char letter in date)
-            {
-                try
-                {
-                    int temp = Convert.ToInt32(letter.ToString()) % 2;
-                }
-                catch (ArithmeticException e)
-                {
-                    //check for / - :, common symbols in dates
-                    letters = true;
-                    break;
-                }
-            }
-
-            if (letters = true)
-            {
-                error += "[!] A date cannot contain letters or invalid characters\n";
-            }
-            else
+            try
             {
                 //parse
                 DateTime tempDate = DateTime.Parse(date);
-                String correctFormat = tempDate.ToString("yyyy-MM-dd");
+                String correctFormat = tempDate.ToString();
 
                 //check if correct format, length etc.
                 if (date != correctFormat) { error += "[!] Date is not in correct format\n"; }
             }
+            catch
+            {
+                error += "[!] Date contains invalid characters and or symbols\n";
+            }
 
             return error;
         }
 
-        public String ValidateNumber(String NumberString, String field)
+        public String ValidateNumber(String NumberString)
         {
             String error = "";
             try
             {
-                int testNumber = Convert.ToInt32(NumberString.Replace(' ', '1'));
-
+                String tempString = NumberString.Replace(" ", "1");
+                int testNumber = Convert.ToInt32(tempString);
             }
-            catch (InvalidCastException e)
+            catch (OverflowException e)
             {
-                error = "[!] Phone number cannot contain letters or invalid characters\n";
+                error += "[!] Phone number is too long\n";
+            }
+            catch
+            {
+                error += "[!] Phone number cannot contain letters or invalid characters\n";
             }
             return error;
         }
 
-        public String ValidateEmail(String emailString, String field)
+        public String ValidateEmail(String emailString)
         {
             String error = "";
 
@@ -262,8 +208,8 @@ namespace CarSellersClasses
 
             //just use regex * @ * . *
             //"^[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z-.]$"
-            Regex EmailCheck = new Regex("^[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z-.]$");
-            if (!EmailCheck.IsMatch(emailString))
+            Regex EmailCheck = new Regex("[a-zA-Z0-9]@[a-zA-Z0-9].[a-zA-Z-.]");
+            if (!(EmailCheck.IsMatch(emailString)))
             {
                 error += "[!] Email is not correct format\n";
             }

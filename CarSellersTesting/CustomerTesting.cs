@@ -102,7 +102,7 @@ namespace CarSellersTesting
         //test data
         String TName = "bob";
         String TSurname = "smith";
-        String TDOB = "19/03/20";
+        String TDOB = DateTime.Now.ToString();
         String TNumber = "1234567890";
         String TEmail = "bob@example.com";
 
@@ -197,7 +197,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            String NewName = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-'";
+            String NewName = "abcdefghijklmnopYZ-'";
             error = newCustomer.Valid(NewName, TSurname, TDOB, TNumber, TEmail);
             Assert.AreEqual(error, "");
         }
@@ -209,19 +209,30 @@ namespace CarSellersTesting
         [TestMethod]
         public void DateTimeLettersCheck()
         {
-            //test date time with letters in it  
+            //test date time with letters in it
+            clsCustomer newCustomer = new clsCustomer();
+            String testDate = "a1/03/20";
+            String error = newCustomer.ValidateDateTime(testDate);
+            Assert.AreNotEqual(error, "");
         }
 
         [TestMethod]
         public void DateTimeSymbolsCheck()
         {
             //test date time with invalid symbols in it
+            clsCustomer newCustomer = new clsCustomer();
+            String testDate = "01/3$6/20";
+            String error = newCustomer.ValidateDateTime(testDate);
+            Assert.AreNotEqual(error, "");
         }
 
         [TestMethod]
         public void DateTimeValidCheck()
         {
             //test valid date time examples
+            clsCustomer newCustomer = new clsCustomer();
+            String error = newCustomer.ValidateDateTime(TDOB);
+            Assert.AreEqual(error, "");
         }
 
         #endregion
@@ -232,24 +243,37 @@ namespace CarSellersTesting
         public void NumberLettersCheck()
         {
             //test number with letters in it, spaces don't matter
+            clsCustomer newCustomer = new clsCustomer();
+            String testNumber = "0123a456789";
+            String error = newCustomer.ValidateNumber(testNumber);
+            Assert.AreNotEqual(error, "");
         }
 
         [TestMethod]
         public void NumberSymbolsCheck()
         {
             //test number with symbols in it
+            clsCustomer newCustomer = new clsCustomer();
+            String testNumber = "012345678*90";
+            String error = newCustomer.ValidateNumber(testNumber);
+            Assert.AreNotEqual(error, "");
         }
 
         [TestMethod]
         public void NumberValidTest()
         {
             //test valid numbers
+            clsCustomer newCustomer = new clsCustomer();
+            String testNumber = "1234 5678";
+            String error = newCustomer.ValidateNumber(testNumber);
+            Assert.AreEqual(error, "");
         }
 
         [TestMethod]
         public void NumberLengthTest()
         {
-            //test boundaries
+            //test boundaries (WIP)
+            //is phone number stored as int32 or int64, or string?
         }
 
         #endregion
@@ -260,12 +284,38 @@ namespace CarSellersTesting
         public void EmailInvalidTests()
         {
             //examples of invalid emails
+            clsCustomer newCustomer = new clsCustomer();
+            String[] invalidEmails = new string[3] 
+            {
+                "bob@example",
+                "@examples.com",
+                "clearly not"
+            };
+            bool outcome = false;
+            foreach (String email in invalidEmails)
+            {
+                outcome |= !(newCustomer.ValidateEmail(email) == "");
+            }
+            Assert.AreNotEqual(outcome, false);
         }
 
         [TestMethod]
         public void EmailValidTests()
         {
             //examples of valid emails
+            clsCustomer newCustomer = new clsCustomer();
+            String[] validEmails = new string[3]
+            {
+                "bob@example.com",
+                "reallylongname@test.ac.uk",
+                "gotanumberinthisname123@emailplace.co.uk"
+            };
+            bool outcome = false;
+            foreach (String email in validEmails)
+            {
+                outcome |= !(newCustomer.ValidateEmail(email) == "");
+            }
+            Assert.AreEqual(outcome, false);
         }
 
         #endregion
