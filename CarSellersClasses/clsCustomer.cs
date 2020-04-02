@@ -117,7 +117,7 @@ namespace CarSellersClasses
 
         //validation method
         //just simple sanitation and filtering, returns error message if any
-        public String Valid(String CName, String CSurname, String CDOB, String CNumber, String CEmail)
+        public String Valid(String CName, String CSurname, String CDOB, String CNumber, String CEmail, String CAddress)
         {
             String Error = "";
             //mName
@@ -130,6 +130,8 @@ namespace CarSellersClasses
             Error += ValidateNumber(CNumber);
             //mEmail, check if email format
             Error += ValidateEmail(CEmail);
+
+            Error += ValidateAddress(CAddress);
             return Error;
         }
 
@@ -139,17 +141,17 @@ namespace CarSellersClasses
 
             if ((nameString.Length == 0) || (nameString == null))
             {
-                error += field + " cannot be null\n";
+                return "[!] " + field + " cannot be null\n";
             }
             if (nameString.Length > 25)
             {
-                error += field + " cannot be more than 25 characters\n";
+                return "[!] " + field + " cannot be more than 25 characters\n";
             }
 
             Regex NameCheck = new Regex("[a-zA-z- '-]");
             if (!(NameCheck.IsMatch(nameString)))
             {
-                error += "Name contains invalid characters, numbers or symbols\n";
+                error += "[!] " + field + " contains invalid characters, numbers or symbols\n";
             }
 
             return error;
@@ -172,7 +174,14 @@ namespace CarSellersClasses
             }
             catch
             {
-                error += "[!] Date contains invalid characters and or symbols\n";
+                if (date == "" || date == null)
+                {
+                    return "[!] Date of birth cannot be left blank\n";
+                }
+                else
+                {
+                    error += "[!] Date contains invalid characters and or symbols\n";
+                }
             }
 
             return error;
@@ -181,6 +190,10 @@ namespace CarSellersClasses
         public String ValidateNumber(String NumberString)
         {
             String error = "";
+            if (NumberString == "" || NumberString == null)
+            {
+                return "[!] Phone number cannot be left blank\n";
+            }
             try
             {
                 String tempString = NumberString.Replace(" ", "1");
@@ -201,9 +214,16 @@ namespace CarSellersClasses
         {
             String error = "";
 
+            if (emailString == "" || emailString == null)
+            {
+                error += "[!] Email cannot be left blank\n";
+                return error;
+            }
+
             if (emailString.Contains(" "))
             {
                 error += "[!] Email cannot contain spaces\n";
+                return error;
             }
 
             //just use regex * @ * . *
@@ -212,6 +232,29 @@ namespace CarSellersClasses
             if (!(EmailCheck.IsMatch(emailString)))
             {
                 error += "[!] Email is not correct format\n";
+            }
+
+            return error;
+        }
+
+        public String ValidateAddress(String addressString)
+        {
+            String error = "";
+
+            if (addressString == "" || addressString == null)
+            {
+                return "[!] Address cannot be left blank\n";
+            }
+            if (addressString.Length > 50)
+            {
+                return "[!] Address is too long";
+            }
+
+            //using same regex pattern as nameValidation
+            Regex NameCheck = new Regex("[a-zA-z- '-]");
+            if (!(NameCheck.IsMatch(addressString)))
+            {
+                return "[!] address contains invalid symbols\n";
             }
 
             return error;

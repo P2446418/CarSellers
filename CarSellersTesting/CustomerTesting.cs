@@ -325,4 +325,13 @@ namespace CarSellersTesting
 
     }
 
+    [TestClass]
+    public class CustomerCollectionTesting
+    {
+        [TestMethod]
+        public void CollectionInstanceOk()
+        {
+            
+        }
+    }
 }

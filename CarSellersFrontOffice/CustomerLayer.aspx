@@ -15,32 +15,28 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:TextBox ID="errorOutput" runat="server" Font-Bold="True" Font-Size="12pt" Height="20px" ReadOnly="True" TextMode="MultiLine" Visible="False" Width="1000px"></asp:TextBox>
         </div>
-        ID :
-        <asp:TextBox ID="IDTextBox" runat="server"></asp:TextBox>
         <br />
-        <br />
-        Name :
+        Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NameTextBox" runat="server" Width="246px"></asp:TextBox>
         <br />
         <br />
-        Surname :
-        <asp:TextBox ID="SurnameTextBox" runat="server" Width="281px"></asp:TextBox>
+        Surname :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="SurnameTextBox" runat="server" Width="281px"></asp:TextBox>
         <br />
         <br />
-        Mobile Number :
-        <asp:TextBox ID="MobileTextBox" runat="server" Width="252px"></asp:TextBox>
+        Phone Number : <asp:TextBox ID="MobileTextBox" runat="server" Width="252px"></asp:TextBox>
         <br />
         <br />
-        Email : <asp:TextBox ID="EmailTextBox" runat="server" Width="346px"></asp:TextBox>
+        Email :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="EmailTextBox" runat="server" Width="426px"></asp:TextBox>
         <br />
         <br />
-        Address :
-        <asp:TextBox ID="AddressTextBox" runat="server" Width="357px"></asp:TextBox>
+        Address :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="AddressTextBox" runat="server" Width="433px"></asp:TextBox>
         <br />
         <br />
-        Date of birth : <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
-        <br />
+        Date of birth :&nbsp;&nbsp;&nbsp; <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
+        &nbsp;&nbsp; Enter date in format DD/MM/YY<br />
         <br />
         Delete me? :<asp:CheckBox ID="DelCustomer" runat="server" />
         <br />
@@ -48,5 +44,6 @@
             <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />
         </p>
     </form>
-</body>
+
+    </body>
 </html>
