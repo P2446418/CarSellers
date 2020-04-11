@@ -8,45 +8,81 @@ using System.Collections.Generic;
 
 namespace CarSellersClasses
 {
-    class clsCustomerCollection
+    public class clsCustomerCollection
     {
         //will handle the adding, editing and deleting of customer instances
         //customer will only be able to add their own instance
         //customer will only be able to edit/modify their own instance
         //customer will only be able to delete their own instance
         // - which just sets toDelete to true, doesn't delete straight away in case there are pending orders
-        public clsCustomer thisCustomer
+        private clsCustomer thisCustomer;
+
+        public clsCustomer getCustomer()
         {
-            get
-            {
-                return thisCustomer;
-            }
-            set
-            {
-                thisCustomer = value;
-            }
+            return thisCustomer;
         }
 
-        public void add(clsCustomer newCustomer)
+        public void setCustomer(clsCustomer newCustomer)
         {
-            //need to write procedure to insert new data into table
+            thisCustomer = newCustomer;
         }
 
-        public void edit()
+        public int add(clsCustomer newCustomer)
         {
+            clsDataConnection database = new clsDataConnection();
+            database.AddParameter("@FirstName", thisCustomer.name);
+            database.AddParameter("@SurName", thisCustomer.surname);
+            database.AddParameter("@DateOfBirth", thisCustomer.DOB);
+            database.AddParameter("@PhoneNumber", thisCustomer.PhoneNumber);
+            database.AddParameter("@Email", thisCustomer.email);
+            database.AddParameter("@Address", thisCustomer.Address);
 
+            return database.Execute("sproc_CustomerTable_Insert");
         }
 
         public void update()
         {
-            //technically the same as edit
-            //however edit() updates the class instance, update() updates the database field.
-            //this will need a procedure to update the fields in the table
+            //updates user data on the database
+            clsDataConnection database = new clsDataConnection();
+
+            database.AddParameter("@FirstName", thisCustomer.name);
+            database.AddParameter("@SurName", thisCustomer.surname);
+            database.AddParameter("@DateOfBirth", thisCustomer.DOB);
+            database.AddParameter("@PhoneNumber", thisCustomer.PhoneNumber);
+            database.AddParameter("@Email", thisCustomer.email);
+            database.AddParameter("@Address", thisCustomer.Address);
+
+            if (thisCustomer.toDelete != true)
+            {
+                database.AddParameter("@toDelete", false);
+            }
+            else
+            {
+                database.AddParameter("@toDelete", true);
+            }
+
+            database.Execute("sproc_CustomerTable_Update");
         }
 
         public void delete()
         {
             //need to write procedure to delete row from table
+            //just sets the toDelete value to true
+            //cannot instantly delete user from database in case they are referenced in current pending orders
+            //      which would cause an error within the database
+
+            clsDataConnection database = new clsDataConnection();
+
+            database.AddParameter("@FirstName", thisCustomer.name);
+            database.AddParameter("@SurName", thisCustomer.surname);
+            database.AddParameter("@DateOfBirth", thisCustomer.DOB);
+            database.AddParameter("@PhoneNumber", thisCustomer.PhoneNumber);
+            database.AddParameter("@Email", thisCustomer.email);
+            database.AddParameter("@Address", thisCustomer.Address);
+            database.AddParameter("@toDelete", true);
+
+            database.Execute("sproc_CustomerTable_Update");
+
         }
 
     }

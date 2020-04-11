@@ -105,6 +105,7 @@ namespace CarSellersTesting
         String TDOB = DateTime.Now.ToString();
         String TNumber = "1234567890";
         String TEmail = "bob@example.com";
+        String TAddress = "123 example lane";
 
 
         [TestMethod]
@@ -112,7 +113,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid(TName, TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid(TName, TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreEqual(error, "");
         }
 
@@ -123,7 +124,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreNotEqual(error, "");
         }
 
@@ -132,7 +133,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("a", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("a", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreEqual(error, "");
         }
 
@@ -141,7 +142,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreEqual(error, "");
         }
 
@@ -150,7 +151,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreEqual(error, "");
         }
 
@@ -159,7 +160,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("aaaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreNotEqual(error, "");
         }
 
@@ -169,7 +170,7 @@ namespace CarSellersTesting
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
             String ExtremeLengthName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            error = newCustomer.Valid(ExtremeLengthName, TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid(ExtremeLengthName, TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreNotEqual(error, "");
         }
 
@@ -178,7 +179,7 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
-            error = newCustomer.Valid("0123456789", TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid("0123456789", TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreNotEqual(error, "");
         }
 
@@ -188,7 +189,7 @@ namespace CarSellersTesting
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
             String NewName = "¬!£$%^&*()_+=}{[]@'~#:;?/><,.|";
-            error = newCustomer.Valid(NewName, TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid(NewName, TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreNotEqual(error, "");
         }
 
@@ -198,7 +199,7 @@ namespace CarSellersTesting
             clsCustomer newCustomer = new clsCustomer();
             String error = "";
             String NewName = "abcdefghijklmnopYZ-'";
-            error = newCustomer.Valid(NewName, TSurname, TDOB, TNumber, TEmail);
+            error = newCustomer.Valid(NewName, TSurname, TDOB, TNumber, TEmail, TAddress);
             Assert.AreEqual(error, "");
         }
 
@@ -331,7 +332,10 @@ namespace CarSellersTesting
         [TestMethod]
         public void CollectionInstanceOk()
         {
-            
+            clsCustomer newCustomer = new clsCustomer();
+            clsCustomerCollection collection = new clsCustomerCollection();
+            collection.setCustomer(newCustomer);
+            Assert.AreEqual(newCustomer, collection.getCustomer());
         }
     }
 }
