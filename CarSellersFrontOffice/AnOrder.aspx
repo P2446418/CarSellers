@@ -47,7 +47,9 @@
 <body>
     <form id="form1" runat="server">
             <asp:Label ID="Label1" runat="server" Text="Order ID"></asp:Label>
-            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox> <br />
+            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox> 
+        <asp:Button ID="btnFind" runat="server" OnClick ="btnFind_Click" Height="26px" Text="Find" Width="56px" style="margin-left: 25px" />
+            <br />
         <asp:Label ID="Label2" runat="server" Text="Number Plate"></asp:Label>
             <asp:TextBox ID="txtNumberPlate" runat="server"></asp:TextBox> <br />
             <asp:Label ID="Label3" runat="server" Text="Customer ID"></asp:Label>

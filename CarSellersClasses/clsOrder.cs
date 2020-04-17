@@ -8,6 +8,9 @@ namespace CarSellersClasses
         private int mOrderID;
         private DateTime mDateOrdered;
         private string mNumberPlate;
+        private int mCustomerID;
+        private int mQuantity;
+        private double mPrice;
         public int orderID
         {
             get
@@ -30,9 +33,39 @@ namespace CarSellersClasses
                 mNumberPlate = value;
             }
         }
-        public int customerID; //tested
-        public int quantity; //tested
-        public double price; //tested
+        public int customerID
+        {
+            get
+            {
+                return mCustomerID;
+            }
+            set
+            {
+                mCustomerID = value;
+            }
+        }//tested
+        public int quantity
+        {
+            get
+            {
+                return mQuantity;
+            }
+            set
+            {
+                mQuantity = value;
+            }
+        }//tested
+        public double price
+        {
+            get
+            {
+                return mPrice;
+            }
+            set
+            {
+                mPrice = value;
+            }
+        }//tested
         public DateTime dateOrdered
         {
             get
@@ -46,10 +79,28 @@ namespace CarSellersClasses
         }
         public bool Find(int orderID)
         {
-            mOrderID = 15;
-            mDateOrdered = Convert.ToDateTime("12/03/2020");
-            mNumberPlate = "AB12 DEF";
-            return true;
+            // connect to DB
+            clsDataConnection DB = new clsDataConnection();
+            // add DB search parameter for Order ID
+            DB.AddParameter("@OrderID", orderID);
+            // execute stored procedure
+            DB.Execute("dbo.sproc_OrderTable_FilterByOrderID");
+            // if 1 record is found
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["dateOrdered"]);
+                mNumberPlate = Convert.ToString(DB.DataTable.Rows[0]["numberPlate"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["price"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
