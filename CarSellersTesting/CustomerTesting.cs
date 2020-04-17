@@ -24,8 +24,8 @@ namespace CarSellersTesting
         {
             clsCustomer newCustomer = new clsCustomer();
             String newName = "bob";
-            newCustomer.setName(newName);
-            Assert.AreEqual(newCustomer.getName(), newName);
+            newCustomer.name = newName;
+            Assert.AreEqual(newCustomer.name, newName);
         }
 
         [TestMethod]

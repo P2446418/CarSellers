@@ -52,6 +52,7 @@ namespace CarSellersClasses
             database.AddParameter("@Email", thisCustomer.email);
             database.AddParameter("@Address", thisCustomer.Address);
 
+            //as the toDelete field is by default null, the method must consider null to be false
             if (thisCustomer.toDelete != true)
             {
                 database.AddParameter("@toDelete", false);
