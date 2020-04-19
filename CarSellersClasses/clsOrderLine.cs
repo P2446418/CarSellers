@@ -74,5 +74,48 @@ namespace CarSellersClasses
                 return false;
             }
         }
+
+        public string Valid(string orderID, string staffID)
+        {
+            int OrderIDTemp;
+            int StaffIDTemp;
+            String Error = "";
+            try
+            {
+                OrderIDTemp = Convert.ToInt32(orderID);
+                if(OrderIDTemp < 1)
+                {
+                    Error = Error + "The Order ID cannot be less than 0 : ";
+                }
+                if(OrderIDTemp > int.MaxValue)
+                {
+                    Error = Error + "The Order ID cannot be greater than the max integer value : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Order ID is not a valid integer : ";
+            }
+
+            try
+            {
+                StaffIDTemp = Convert.ToInt32(staffID);
+                if (StaffIDTemp < 1)
+                {
+                    Error = Error + "The Staff ID cannot be less than 0 : ";
+                }
+                if (StaffIDTemp > 100)
+                {
+                    Error = Error + "The Staff ID cannot be greater than 100 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Staff ID is not a valid integer : ";
+            }
+
+
+            return Error;
+        }
     }
 }

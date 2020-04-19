@@ -7,6 +7,10 @@ namespace CarSellersTesting
     [TestClass]
     public class OrderLineTest
     {
+
+        string OrderID = "1";
+        string StaffID = "1";
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -119,6 +123,120 @@ namespace CarSellersTesting
                 Found = false;
             }
             Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void ValidMethodOk()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIDMinLessOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string OrderID = "0";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderIDMin()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string OrderID = "1";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderIDMaxLessOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            int OrderIDTemp = int.MaxValue - 1;
+            string OrderID = OrderIDTemp.ToString();
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderIDMax()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            int OrderIDTemp = int.MaxValue;
+            string OrderID = OrderIDTemp.ToString();
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderIDMaxPlusOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string OrderID = int.MaxValue + 1.ToString();
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinLessOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string StaffID = "0";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string StaffID = "1";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMaxLessOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string StaffID = "99";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMax()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string StaffID = "100";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMaxPlusOne()
+        {
+            clsOrderLine new_orderline = new clsOrderLine();
+            string Error = "";
+            string StaffID = "101";
+            Error = new_orderline.Valid(OrderID, StaffID);
+
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
