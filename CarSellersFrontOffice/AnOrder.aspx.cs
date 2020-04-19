@@ -20,14 +20,32 @@ public partial class AnOrder : System.Web.UI.Page
     protected void OkBtn_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        AnOrder.orderID = Convert.ToInt32(txtOrderID.Text);
-        AnOrder.numberPlate = txtNumberPlate.Text;
-        AnOrder.customerID = Convert.ToInt32(txtCustID.Text);
-        AnOrder.quantity = Convert.ToInt32(txtQuantity.Text);
-        AnOrder.dateOrdered = Convert.ToDateTime(txtOrderDate.Text);
-        AnOrder.price = Convert.ToDouble(txtPrice.Text);
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        string OrderID = txtOrderID.Text;
+        string NumberPlate = txtNumberPlate.Text;
+        string CustomerID = txtCustID.Text;
+        string Quantity = txtQuantity.Text;
+        string DateOrdered = txtOrderDate.Text;
+        string Price = txtPrice.Text;
+        string Error = "";
+
+        Error = AnOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
+
+        if(Error == "")
+        {
+            AnOrder.orderID = Convert.ToInt32(txtOrderID.Text);
+            AnOrder.numberPlate = txtNumberPlate.Text;
+            AnOrder.customerID = Convert.ToInt32(txtCustID.Text);
+            AnOrder.quantity = Convert.ToInt32(txtQuantity.Text);
+            AnOrder.dateOrdered = Convert.ToDateTime(txtOrderDate.Text);
+            AnOrder.price = Convert.ToDouble(txtPrice.Text);
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
     }
 
 

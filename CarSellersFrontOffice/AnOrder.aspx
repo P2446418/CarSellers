@@ -61,6 +61,8 @@
         <asp:Label ID="Label6" runat="server" Text="Price"></asp:Label>
         <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox><br />
         <br />
+        <asp:Label ID ="lblError" runat="server"></asp:Label>
+        <br />
         <asp:Button ID="OkBtn" runat="server" OnClick ="OkBtn_Click" Height="26px" Text="OK" Width="38px" />
         <asp:Button ID="cancel_button" runat="server" style="margin-left: 24px" Text="Cancel" />
     </form>

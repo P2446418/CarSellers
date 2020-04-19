@@ -12,5 +12,11 @@ public partial class OrderViewer : System.Web.UI.Page
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
         Response.Write(AnOrder.orderID);
+        Response.Write(AnOrder.numberPlate);
+        Response.Write(AnOrder.customerID);
+        Response.Write(AnOrder.quantity);
+        Response.Write(AnOrder.dateOrdered);
+        Response.Write(AnOrder.price);
+
     }
 }

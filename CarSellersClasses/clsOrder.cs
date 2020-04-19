@@ -102,5 +102,94 @@ namespace CarSellersClasses
             }
 
         }
+
+        public string Valid(string dateOrdered, string numberPlate, string customerID, string quantity, string price)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            int CustomerIDTemp;
+            int QuantityTemp;
+            double PriceTemp;
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateOrdered);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            try
+            {
+                CustomerIDTemp = Convert.ToInt32(customerID);
+                if (CustomerIDTemp < 1)
+                {
+                    Error = Error + "Customer ID cannot be less than 1 : ";
+                }
+                if (CustomerIDTemp > Int32.MaxValue)
+                {
+                    Error = Error + "Customer ID cannot be larger than max integer value : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Customer ID is not a valid integer : ";
+            }
+
+            try
+            {
+                QuantityTemp = Convert.ToInt32(quantity);
+                if (QuantityTemp < 1)
+                {
+                    Error = Error + "Quantity cannot be less than 1 : ";
+                }
+                if (QuantityTemp > 10)
+                {
+                    Error = Error + "Quantity cannot be larger than 10 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Quantity is not a valid integer : ";
+            }
+
+            try
+            {
+                PriceTemp = Convert.ToDouble(price);
+                if(PriceTemp < 1)
+                {
+                    Error = Error + "The price cannot be less than 1 : ";
+                }
+                if(PriceTemp > 50000)
+                {
+                    Error = Error + "The price cannot be greater than 50000";
+                }
+            }
+            catch
+            {
+                Error = Error + "Price is not a valid double value : ";
+            }
+
+            if (numberPlate.Length < 2)
+            {
+                Error = Error + "The number plate cannot be less than 2 characters : ";
+            }
+            if (numberPlate.Length > 7)
+            {
+                Error = Error + "The number plate cannot be longer than 7 characters : ";
+            }
+
+
+            return Error;
+        }
     }
 }
