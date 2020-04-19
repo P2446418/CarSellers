@@ -12,6 +12,7 @@ public partial class StaffViewer : System.Web.UI.Page
         clsStaff aStaff = new clsStaff();
         aStaff = (clsStaff)Session["aStaff"];
         Response.Write(aStaff.FirstName);
+
         txtFirstName.text = aStaff.FirstName;
     }
 }

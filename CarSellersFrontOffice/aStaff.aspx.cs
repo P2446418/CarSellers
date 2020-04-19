@@ -24,7 +24,7 @@ public partial class AStaff : System.Web.UI.Page
         protected void StaffOKButton_Click(object sender, EventArgs e)
         {
             clsStaff aStaff = new clsStaff();
-            aStaff.StaffID = txtStaffID.text;
+            aStaff.StaffID = txtStaffID.Text;
             aStaff.FirstName = txtFirstName.Text;
         
             //aStaff.Surname = SurnameTextBox.Text;
