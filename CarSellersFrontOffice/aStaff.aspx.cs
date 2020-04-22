@@ -1,7 +1,7 @@
 ﻿using CarSellersClasses;
 using System;
 
-public partial class AStaff : System.Web.UI.Page
+public partial class aStaff : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -23,10 +23,11 @@ public partial class AStaff : System.Web.UI.Page
         String FirstName = FirstNameTextBox.Text;
         String Surname = SurnameTextBox.Text;
         String DOB = DOBTextBox.Text;
-        String MobileNumber = MobNumTextBox.Text;
+        String MobileNumber = MobileNumberTextBox.Text;
         String Position = PosTextBox.Text;
+        Boolean inOffice = IOCheckBox.Checked;
 
-        String error = aStaff.Valid(FirstName, Surname, DOB, MobileNumber, Position);
+        String error = aStaff.Valid(FirstName, Surname, DOB, MobileNumber, Position, inOffice);
 
         if (error == "")
         {
@@ -57,3 +58,4 @@ public partial class AStaff : System.Web.UI.Page
             }
         }
     }
+}

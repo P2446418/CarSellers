@@ -24,20 +24,15 @@ public partial class StaffViewer : System.Web.UI.Page
         }
     }
 
-    protected void EmailAppearBox_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
     protected void FindButton_Click(object sender, EventArgs e)
     {
         clsStaff aStaff = new clsStaff();
-        Int32 CustomerNo;
+        Int32 StaffNo;
         Boolean Found = false;
-        CustomerNo = Convert.ToInt32(IDAppearBox.Text);
+        StaffNo = Convert.ToInt32(IDAppearBox.Text);
         try
         {
-            Found = aStaff.Find(CustomerNo);
+            Found = aStaff.Find(StaffNo);
             if (Found == true)
             {
                 NameAppearBox.Text = aStaff.FirstName;
@@ -49,7 +44,7 @@ public partial class StaffViewer : System.Web.UI.Page
             }
             else
             {
-                IDAppearBox.Text = "Customer Not Found";
+                IDAppearBox.Text = "Staff Not Found";
             }
         }
         catch (System.FormatException)

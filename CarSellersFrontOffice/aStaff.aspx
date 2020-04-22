@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="Form1" runat="server">
         <div>
             <asp:Label ID="StaffIDLabel" runat="server" Text="StaffID"></asp:Label>
             <asp:TextBox ID="StaffIDTextBox" runat="server" ClientIDMode="AutoID"></asp:TextBox>
@@ -18,7 +18,7 @@
             <br />
             DOB<asp:TextBox ID="DOBTextBox" runat="server"></asp:TextBox>
             <br />
-            MobileNumber<asp:TextBox ID="MobNumbTextBox" runat="server"></asp:TextBox>
+            MobileNumber<asp:TextBox ID="MobileNumberTextBox" runat="server"></asp:TextBox>
             <br />
             Position<asp:TextBox ID="PosTextBox" runat="server"></asp:TextBox>
             <br />
