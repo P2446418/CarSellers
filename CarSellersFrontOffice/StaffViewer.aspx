@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffViewer.aspx.cs" Inherits="StaffViewer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffViewer.aspx.cs" Inherits="aStaff" %>
 
 <!DOCTYPE html>
 
@@ -8,9 +8,37 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <p>
+            <br />
+            Typed in ID :
+            <asp:TextBox ID="IDAppearBox" runat="server"></asp:TextBox>
+            <asp:Button ID="FindButton" runat="server" OnClick="FindButton_Click" Text="Search" />
+        </p>
+        <p>
+            Typed in FirstName :
+            <asp:TextBox ID="FirstNameAppearBox" runat="server" Width="276px"></asp:TextBox>
+        </p>
+        <p>
+            Typed in Surname :
+            <asp:TextBox ID="SurnameAppearBox" runat="server" Width="298px"></asp:TextBox>
+        </p>
+        <p>
+            Typed in Mobile :
+            <asp:TextBox ID="MobileAppearBox" runat="server" Width="302px"></asp:TextBox>
+        </p>
+        <p>
+            Typed in Position :
+            <asp:TextBox ID="PositionAppearBox" runat="server" Width="297px"></asp:TextBox>
+        </p>
+        <p>
+            Typed in Date of birth :
+            <asp:TextBox ID="DateAppearBox" runat="server" Width="266px"></asp:TextBox>
+        </p>
+        <p>
+            Want to delete? :
+            <asp:Label ID="DeleteCustomerLabel" runat="server" Text="---" BackColor="White"></asp:Label>
+        </p>
         <div>
-            FirstNam Typed:
-            <asp:TextBox ID="txtFirstN" runat="server"></asp:TextBox>
         </div>
     </form>
 </body>

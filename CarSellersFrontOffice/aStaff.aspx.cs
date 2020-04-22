@@ -20,7 +20,7 @@ public partial class AStaff : System.Web.UI.Page
     {
         clsStaff aStaff = new clsStaff();
         //validation
-        String FirstName = txtFirstName.Text;
+        String FirstName = FirstNameTextBox.Text;
         String Surname = SurnameTextBox.Text;
         String DOB = DOBTextBox.Text;
         String MobileNumber = MobNumTextBox.Text;
