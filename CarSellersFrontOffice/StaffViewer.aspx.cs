@@ -20,7 +20,7 @@ public partial class StaffViewer : System.Web.UI.Page
             MobileAppearBox.Text = Convert.ToString(aStaff.MobileNumber);
             PositionAppearBox.Text = aStaff.Position;
             DateAppearBox.Text = Convert.ToString(aStaff.DOB);
-            DeleteCustomerLabel.Text = Convert.ToString(aStaff.toDelete);
+            DeleteStaffLabel.Text = Convert.ToString(aStaff.toDelete);
         }
     }
 
@@ -35,12 +35,12 @@ public partial class StaffViewer : System.Web.UI.Page
             Found = aStaff.Find(StaffNo);
             if (Found == true)
             {
-                NameAppearBox.Text = aStaff.FirstName;
+                FirstNameAppearBox.Text = aStaff.FirstName;
                 SurnameAppearBox.Text = aStaff.Surname;
                 MobileAppearBox.Text = Convert.ToString(aStaff.MobileNumber);
                 PositionAppearBox.Text = aStaff.Position;
                 DateAppearBox.Text = Convert.ToString(aStaff.DOB);
-                DeleteCustomerLabel.Text = Convert.ToString(aStaff.toDelete);
+                DeleteStaffLabel.Text = Convert.ToString(aStaff.toDelete);
             }
             else
             {

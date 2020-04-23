@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffViewer.aspx.cs" Inherits="aStaff" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffViewer.aspx.cs" Inherits="StaffViewer" %>
 
 <!DOCTYPE html>
 
@@ -36,7 +36,7 @@
         </p>
         <p>
             Want to delete? :
-            <asp:Label ID="DeleteCustomerLabel" runat="server" Text="---" BackColor="White"></asp:Label>
+            <asp:Label ID="DeleteStaffLabel" runat="server" Text="---" BackColor="White"></asp:Label>
         </p>
         <div>
         </div>
