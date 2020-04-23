@@ -14,20 +14,27 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Stock Id:
-            <input id="Text1" type="text" /><br />
-            production year:
-            <input id="Text2" type="text" /><br />
-            mileage:
-            <input id="Text3" type="text" /><br />
-            price:
-            <input id="Text4" type="text" /><br />
-            sold:
-            <input id="Checkbox1" type="checkbox" /><br />
-            model name:
-            <input id="Text6" type="text" /><br />
+            number plate:
+            <asp:TextBox ID="txtNumberPlate" runat="server"></asp:TextBox>
             <br />
-            <input id="Button1" type="button" value="ok" />&nbsp;
+            production year:
+            <asp:TextBox ID="txtProductionYear" runat="server"></asp:TextBox>
+            <br />
+            mileage:
+            <asp:TextBox ID="txtMileage" runat="server"></asp:TextBox>
+            <br />
+            price:
+            <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+            <br />
+            sold:
+            <asp:CheckBox ID="CheckBoxSold" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
+            <br />
+            model name:
+            <asp:TextBox ID="txtModelName" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            &nbsp;
+            <asp:Button ID="ButtonOk" runat="server" OnClick="ButtonOk_Click" Text="Button" />
             <input id="Button2" type="button" value="cancel" /></div>
     </form>
 </body>
