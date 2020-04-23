@@ -9,24 +9,34 @@
 <body>
     <form id="Form1" runat="server">
         <div>
+            <div>
+            <asp:TextBox ID="errorOutput" runat="server" Font-Bold="True" Font-Size="12pt" Height="20px" ReadOnly="True" TextMode="MultiLine" Visible="False" Width="1000px"></asp:TextBox>
+            </div>
+            <br />
             <asp:Label ID="StaffIDLabel" runat="server" Text="StaffID"></asp:Label>
             <asp:TextBox ID="StaffIDTextBox" runat="server" ClientIDMode="AutoID"></asp:TextBox>
             <br />
-            FirstName<asp:TextBox ID="FirstNameTextBox" runat="server"></asp:TextBox>
             <br />
-            Surname<asp:TextBox ID="SurnameTextBox" runat="server"></asp:TextBox>
+            FirstName :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="FirstNameTextBox" runat="server"></asp:TextBox>
             <br />
-            DOB<asp:TextBox ID="DOBTextBox" runat="server"></asp:TextBox>
             <br />
-            MobileNumber<asp:TextBox ID="MobileNumberTextBox" runat="server"></asp:TextBox>
+            Surname :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="SurnameTextBox" runat="server"></asp:TextBox>
             <br />
-            Position<asp:TextBox ID="PosTextBox" runat="server"></asp:TextBox>
             <br />
-            InOffice<asp:CheckBox ID="IOCheckBox" runat="server" />
+            DOB :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="DOBTextBox" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp; Enter date in format DD/MM/YY
+            <br />
+            <br />
+            MobileNumber :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="MobileNumberTextBox" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Position :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="PosTextBox" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            InOffice? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:CheckBox ID="IOCheckBox" runat="server" />
         </div>
         <br />
         <asp:Button ID="StaffOKButton" runat="server" OnClick="StaffOKButton_Click" Text="OK" />
-        <asp:Button ID="StaffCancelButton" runat="server" Text="Cancel" />
     </form>
 </body>
 </html>

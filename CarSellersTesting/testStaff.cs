@@ -96,17 +96,17 @@ namespace CarSellersTesting
         }
         #endregion
 
-        #region FindTests
-        [TestMethod]
-        public void FindMethodOK()
-        {
-            clsStaff aStaff = new clsStaff();
-            Boolean Found = false;
-            String FirstName = "Jeff";
-            Found = aStaff.Find(FirstName);
-            Assert.IsTrue(Found);
-        }
-        #endregion
+        //#region FindTests
+        //[TestMethod]
+        //public void FindMethodOK()
+        //{
+        //    clsStaff aStaff = new clsStaff();
+        //   Boolean Found = false;
+        //    String FirstName = "Jeff";
+        //    Found = aStaff.Find(FirstName);
+        //    Assert.IsTrue(Found);
+        //}
+        //#endregion
 
         [TestClass]
         public class StaffValidationTesting
@@ -119,6 +119,7 @@ namespace CarSellersTesting
             String TDOB = DateTime.Now.ToString();
             String TMobileNumber = "1234567890";
             String TPosition = "Sales";
+            bool TInOffice = true;
 
 
             [TestMethod]
@@ -126,7 +127,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid(TFirstName, TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid(TFirstName, TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreEqual(error, "");
             }
 
@@ -137,7 +138,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreNotEqual(error, "");
             }
 
@@ -146,7 +147,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("a", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("a", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreEqual(error, "");
             }
 
@@ -155,7 +156,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreEqual(error, "");
             }
 
@@ -164,7 +165,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreEqual(error, "");
             }
 
@@ -173,7 +174,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("aaaaaaaaaaaaaaaaaaaaaaaaaa", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreNotEqual(error, "");
             }
 
@@ -183,7 +184,7 @@ namespace CarSellersTesting
                 clsStaff aStaff = new clsStaff();
                 String error = "";
                 String ExtremeLengthName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-                error = aStaff.Valid(ExtremeLengthName, TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid(ExtremeLengthName, TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreNotEqual(error, "");
             }
 
@@ -192,7 +193,7 @@ namespace CarSellersTesting
             {
                 clsStaff aStaff = new clsStaff();
                 String error = "";
-                error = aStaff.Valid("0123456789", TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid("0123456789", TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreNotEqual(error, "");
             }
 
@@ -202,7 +203,7 @@ namespace CarSellersTesting
                 clsStaff aStaff = new clsStaff();
                 String error = "";
                 String NewFirstName = "¬!£$%^&*()_+=}{[]@'~#:;?/><,.|";
-                error = aStaff.Valid(NewFirstName, TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid(NewFirstName, TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreNotEqual(error, "");
             }
 
@@ -212,7 +213,7 @@ namespace CarSellersTesting
                 clsStaff aStaff = new clsStaff();
                 String error = "";
                 String NewFirstName = "abcdefghijklmnopYZ-'";
-                error = aStaff.Valid(NewFirstName, TSurname, TDOB, TMobileNumber, TPosition);
+                error = aStaff.Valid(NewFirstName, TSurname, TDOB, TMobileNumber, TPosition, TInOffice);
                 Assert.AreEqual(error, "");
             }
 

@@ -25,7 +25,7 @@ public partial class aStaff : System.Web.UI.Page
         String DOB = DOBTextBox.Text;
         String MobileNumber = MobileNumberTextBox.Text;
         String Position = PosTextBox.Text;
-        Boolean inOffice = IOCheckBox.Checked;
+        bool inOffice = IOCheckBox.Checked;
 
         String error = aStaff.Valid(FirstName, Surname, DOB, MobileNumber, Position, inOffice);
 
@@ -40,6 +40,7 @@ public partial class aStaff : System.Web.UI.Page
             aStaff.DOB = DateTime.Parse(DOB);
             aStaff.MobileNumber = Convert.ToInt32(MobileNumber);
             aStaff.Position = Position;
+            aStaff.InOffice = inOffice;
             //aStaff.toDelete = DelStaff.Checked;
             Session["aStaff"] = aStaff;
             Response.Redirect("StaffViewer.aspx");

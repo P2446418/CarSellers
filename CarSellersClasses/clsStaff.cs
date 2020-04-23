@@ -5,7 +5,6 @@ namespace CarSellersClasses
 {
     public class clsStaff
     {
-        public bool InOffice { get; set; }
 
         #region ClassFields
 
@@ -51,6 +50,13 @@ namespace CarSellersClasses
             set { mPosition = value; }
         }
 
+        private bool mInOffice;
+        public bool InOffice
+        {
+            get { return mInOffice; }
+            set { mInOffice = value; }
+        }
+
         private Boolean mDelete;
         public Boolean toDelete
         {
@@ -81,6 +87,7 @@ namespace CarSellersClasses
                 mSurname = Convert.ToString(Database.DataTable.Rows[0]["Surname"]);
                 mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DateOfBirth"]));
                 mMobileNumber = Convert.ToInt32(Database.DataTable.Rows[0]["MobileNumber"]);
+                mInOffice = Convert.ToBoolean(Database.DataTable.Rows[0]["InOffice"]);
                 mDelete = Convert.ToBoolean(Database.DataTable.Rows[0]["toDelete"]);
                 return true;
             }
@@ -92,17 +99,20 @@ namespace CarSellersClasses
 
         //Main validation method and sub-validation methods
         //just simple sanitation and filtering, returns error message if any
-        public String Valid(String SFirstName, String SSurname, String SDOB, String SNumber)
+        public String Valid(String SFirstName, String SSurname, String SDOB, String SPhoneNumber, String SPosition, bool SInOffice)
         {
             String Error = "";
             //mName, check for symbols and length
             Error = ValidateNames(SFirstName, "FirstName");
             //mSurname, check for symbols and length
-            Error += ValidateNames(SSurname, "SurName");
+            Error += ValidateNames(SSurname, "Surname");
             //mDob, check for datetime format and if it's valid for SQL
             Error += ValidateDateTime(SDOB);
             //mMobileNumber, check if actual number, no letters
-            Error += ValidateMobileNumber(SNumber);
+            Error += ValidateMobileNumber(SPhoneNumber);
+            //mPosition, check for symbols and length
+            Error += ValidateNames(SPosition, "Position");
+            //mInOffice, check if actual number, only
             return Error;
         }
 
@@ -120,8 +130,8 @@ namespace CarSellersClasses
                 return "[!] " + field + " cannot be more than 25 characters\n";
             }
             //regex check to look for invalid characters
-            Regex NameCheck = new Regex("[a-zA-z- '-]");
-            if (!(NameCheck.IsMatch(FirstNameString)))
+            Regex FirstNameCheck = new Regex("[a-zA-z- '-]");
+            if (!(FirstNameCheck.IsMatch(FirstNameString)))
             {
                 error += "[!] " + field + " contains invalid characters, numbers or symbols\n";
             }
