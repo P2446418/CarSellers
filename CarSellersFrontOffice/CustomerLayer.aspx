@@ -38,8 +38,6 @@
         Date of birth :&nbsp;&nbsp;&nbsp; <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
         &nbsp;&nbsp; Enter date in format DD/MM/YY<br />
         <br />
-        Delete me? :<asp:CheckBox ID="DelCustomer" runat="server" />
-        <br />
         <p>
             <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />
         </p>

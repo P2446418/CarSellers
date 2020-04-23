@@ -21,16 +21,12 @@ public partial class CustomerViewer : System.Web.UI.Page
             EmailAppearBox.Text = newCustomer.email;
             AddressAppearBox.Text = newCustomer.Address;
             DateAppearBox.Text = Convert.ToString(newCustomer.DOB);
-            DeleteCustomerLabel.Text = Convert.ToString(newCustomer.toDelete);
+            toDeleteCheckBox.Checked = newCustomer.toDelete;
         }
     }
 
-
-    protected void EmailAppearBox_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
+    //defunct
+    /**
     protected void FindButton_Click(object sender, EventArgs e)
     {
         clsCustomer newCustomer = new clsCustomer();
@@ -59,5 +55,13 @@ public partial class CustomerViewer : System.Web.UI.Page
         {
             IDAppearBox.Text = "Invalid Input";
         }
+    }
+    */
+
+    //update the customer's data in the database
+    protected void UpdateCustomerButton_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection collection = new clsCustomerCollection();
+        collection.update();
     }
 }

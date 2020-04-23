@@ -10,36 +10,32 @@
     <form id="form1" runat="server">
         <p>
             <br />
-            Typed in ID :
+            Customer ID :
             <asp:TextBox ID="IDAppearBox" runat="server"></asp:TextBox>
-            <asp:Button ID="FindButton" runat="server" OnClick="FindButton_Click" Text="Search" />
         </p>
         <p>
-            Typed in Name :
-            <asp:TextBox ID="NameAppearBox" runat="server" Width="276px"></asp:TextBox>
+            Name : <asp:TextBox ID="NameAppearBox" runat="server" Width="276px"></asp:TextBox>
         </p>
         <p>
-            Typed in Surname :
-            <asp:TextBox ID="SurnameAppearBox" runat="server" Width="298px"></asp:TextBox>
+            Surname : <asp:TextBox ID="SurnameAppearBox" runat="server" Width="298px"></asp:TextBox>
         </p>
         <p>
-            Typed in Mobile :
-            <asp:TextBox ID="MobileAppearBox" runat="server" Width="302px"></asp:TextBox>
+            Mobile Number : <asp:TextBox ID="MobileAppearBox" runat="server" Width="302px"></asp:TextBox>
         </p>
         <p>
-            Typed in email : <asp:TextBox ID="EmailAppearBox" runat="server" OnTextChanged="EmailAppearBox_TextChanged" Width="361px"></asp:TextBox>
+            Email : <asp:TextBox ID="EmailAppearBox" runat="server" Width="361px"></asp:TextBox>
         </p>
         <p>
-            Typed in Address :
-            <asp:TextBox ID="AddressAppearBox" runat="server" Width="297px"></asp:TextBox>
+            Address : <asp:TextBox ID="AddressAppearBox" runat="server" Width="297px"></asp:TextBox>
         </p>
         <p>
-            Typed in Date of birth :
-            <asp:TextBox ID="DateAppearBox" runat="server" Width="266px"></asp:TextBox>
+            Date of birth : <asp:TextBox ID="DateAppearBox" runat="server" Width="266px"></asp:TextBox>
         </p>
         <p>
-            Wants to delete? :
-            <asp:Label ID="DeleteCustomerLabel" runat="server" Text="---" BackColor="White"></asp:Label>
+            Delete this account? : <asp:CheckBox ID="toDeleteCheckBox" runat="server" />
+        </p>
+        <p>
+            <asp:Button ID="UpdateCustomerButton" runat="server" Font-Size="Medium" OnClick="UpdateCustomerButton_Click" Text="Update Account" />
         </p>
         <div>
         </div>
