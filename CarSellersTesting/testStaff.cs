@@ -102,10 +102,14 @@ namespace CarSellersTesting
         {
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
-            int StaffNo = 0;
-            Found = aStaff.Find(StaffNo);
+            int StaffID = 1;
+            Found = aStaff.Find(StaffID);
             Assert.IsTrue(Found);
         }
+
+
+
+
         #endregion
 
         [TestClass]
@@ -117,7 +121,7 @@ namespace CarSellersTesting
             String TFirstName = "John";
             String TSurname = "Smith";
             String TDOB = DateTime.Now.ToString();
-            String TMobileNumber = "1234567890";
+            String TMobileNumber = "12345678900";
             String TPosition = "Sales";
             bool TInOffice = true;
 

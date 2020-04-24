@@ -29,8 +29,8 @@ namespace CarSellersClasses
             set { mSurname = value; }
         }
 
-        private Int64 mMobileNumber;
-        public Int64 MobileNumber
+        private String mMobileNumber;
+        public String MobileNumber
         {
             get { return mMobileNumber; }
             set { mMobileNumber = value; }
@@ -86,7 +86,7 @@ namespace CarSellersClasses
                 mFirstName = Convert.ToString(Database.DataTable.Rows[0]["FirstName"]);
                 mSurname = Convert.ToString(Database.DataTable.Rows[0]["Surname"]);
                 mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DateOfBirth"]));
-                mMobileNumber = Convert.ToInt64(Database.DataTable.Rows[0]["MobileNumber"]);
+                mMobileNumber = Convert.ToString(Database.DataTable.Rows[0]["MobileNumber"]);
                 mInOffice = Convert.ToBoolean(Database.DataTable.Rows[0]["InOffice"]);
                 mDelete = Convert.ToBoolean(Database.DataTable.Rows[0]["toDelete"]);
                 return true;
