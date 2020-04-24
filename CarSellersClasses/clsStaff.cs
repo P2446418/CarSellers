@@ -85,7 +85,7 @@ namespace CarSellersClasses
                 mStaffID = Convert.ToInt32(Database.DataTable.Rows[0]["StaffId"]);
                 mFirstName = Convert.ToString(Database.DataTable.Rows[0]["FirstName"]);
                 mSurname = Convert.ToString(Database.DataTable.Rows[0]["Surname"]);
-                mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DateOfBirth"]));
+                mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DOB"]));
                 mMobileNumber = Convert.ToString(Database.DataTable.Rows[0]["MobileNumber"]);
                 mInOffice = Convert.ToBoolean(Database.DataTable.Rows[0]["InOffice"]);
                 mDelete = Convert.ToBoolean(Database.DataTable.Rows[0]["toDelete"]);

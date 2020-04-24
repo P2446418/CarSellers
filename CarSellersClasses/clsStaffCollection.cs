@@ -34,6 +34,7 @@ namespace CarSellersClasses
             database.AddParameter("@DateOfBirth", thisStaff.DOB);
             database.AddParameter("@MobileNumber", thisStaff.MobileNumber);
             database.AddParameter("@Position", thisStaff.Position);
+            database.AddParameter("@InOffice", thisStaff.InOffice);
 
             return database.Execute("sproc_StaffTable_Insert");
         }
@@ -48,6 +49,7 @@ namespace CarSellersClasses
             database.AddParameter("@DateOfBirth", thisStaff.DOB);
             database.AddParameter("@MobileNumber", thisStaff.MobileNumber);
             database.AddParameter("@Position", thisStaff.Position);
+            database.AddParameter("@InOffice", thisStaff.InOffice);
 
             //as the toDelete field is by default null, the method must consider null to be false
             if (thisStaff.toDelete != true)
@@ -76,6 +78,7 @@ namespace CarSellersClasses
             database.AddParameter("@DateOfBirth", thisStaff.DOB);
             database.AddParameter("@MobileNumber", thisStaff.MobileNumber);
             database.AddParameter("@Position", thisStaff.Position);
+            database.AddParameter("@InOffice", thisStaff.InOffice);
             database.AddParameter("@toDelete", true);
 
             database.Execute("sproc_StaffTable_Update");
