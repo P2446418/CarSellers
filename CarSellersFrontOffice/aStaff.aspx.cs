@@ -38,7 +38,7 @@ public partial class aStaff : System.Web.UI.Page
             aStaff.FirstName = FirstName;
             aStaff.Surname = Surname;
             aStaff.DOB = DateTime.Parse(DOB);
-            aStaff.MobileNumber = Convert.ToInt32(MobileNumber);
+            aStaff.MobileNumber = MobileNumber;
             aStaff.Position = Position;
             aStaff.InOffice = inOffice;
             //aStaff.toDelete = DelStaff.Checked;
