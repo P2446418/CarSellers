@@ -59,14 +59,14 @@ namespace CarSellersTesting
             Assert.AreEqual(aStaff.Surname, TestData);
         }
 
-        //[TestMethod]
-        //public void StaffMobileNumberOK()
-        //{
-        //    clsStaff aStaff = new clsStaff();
-        //    string TestData = "07594273092";
-        //    aStaff.MobileNumber = TestData;
-        //    Assert.AreEqual(aStaff.MobileNumber, TestData);
-        //}
+        [TestMethod]
+        public void StaffMobileNumberOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            Int64 TestData = 07594273092;
+            aStaff.MobileNumber = TestData;
+            Assert.AreEqual(aStaff.MobileNumber, TestData);
+        }
 
         [TestMethod]
         public void StaffPositionOK()
@@ -96,17 +96,17 @@ namespace CarSellersTesting
         }
         #endregion
 
-        //#region FindTests
-        //[TestMethod]
-        //public void FindMethodOK()
-        //{
-        //    clsStaff aStaff = new clsStaff();
-        //   Boolean Found = false;
-        //    String FirstName = "Jeff";
-        //    Found = aStaff.Find(FirstName);
-        //    Assert.IsTrue(Found);
-        //}
-        //#endregion
+        #region FindTests
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            Boolean Found = false;
+            int StaffNo = 0;
+            Found = aStaff.Find(StaffNo);
+            Assert.IsTrue(Found);
+        }
+        #endregion
 
         [TestClass]
         public class StaffValidationTesting
