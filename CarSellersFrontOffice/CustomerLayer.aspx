@@ -36,7 +36,7 @@
         <br />
         <br />
         Date of birth :&nbsp;&nbsp;&nbsp; <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
-        &nbsp;&nbsp; Enter date in format DD/MM/YY<br />
+        &nbsp;&nbsp; Enter date in format YYYY-MM-DD<br />
         <br />
         <p>
             <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />

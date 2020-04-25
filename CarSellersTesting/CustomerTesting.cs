@@ -102,7 +102,7 @@ namespace CarSellersTesting
         //test data
         String TName = "bob";
         String TSurname = "smith";
-        String TDOB = DateTime.Now.ToString();
+        String TDOB = "2020-04-25"; //DateTime.Now.ToString();
         String TNumber = "1234567890";
         String TEmail = "bob@example.com";
         String TAddress = "123 example lane";

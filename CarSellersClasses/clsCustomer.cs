@@ -144,17 +144,20 @@ namespace CarSellersClasses
 
         public String ValidateDateTime(String date)
         {
-            //Customer SQL table is using Date data type, so format required is YYYY/MM/DD
+            //Customer SQL table is using Date data type, so format required is yyyy-MM-dd 00:00:00
             //C# datetime uses DD/MM/YY HH/MM/SS and can be parsed as different formats
             String error = "";
             try
             {
                 //parse string into datetime and back
                 DateTime tempDate = DateTime.Parse(date);
-                String correctFormat = tempDate.ToString();
+
+                if (tempDate > DateTime.Now) { return "[!] Date is in the future"; }
+
+                String correctFormat = tempDate.ToString("yyyy-MM-dd 00:00:00");
 
                 //check if correct format, length etc.
-                if (date != correctFormat) { error += "[!] Date is not in correct format\n"; }
+                if ((date + " 00:00:00") != correctFormat) { error += "[!] Date is not in correct format\n"; }
             }
             catch //date is not valid date
             {
