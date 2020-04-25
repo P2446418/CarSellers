@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace CarSellersClasses
@@ -149,9 +150,13 @@ namespace CarSellersClasses
                 //parse string into datetime and back
                 DateTime tempDate = DateTime.Parse(date);
 
+                //Regex ragex = new Regex(@"((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19/20)\d\d))$");
+                //bool isValid = ragex.IsMatch(date);
+                //isValid = DateTime.TryParseExact(tempDate, "dd/MM/yyyy", new CultureInfo("en-GB"), DateTimeStyles.None, out date);
+
                 if (tempDate > DateTime.Now) { return "[!] Date is in the future"; }
 
-                String correctFormat = tempDate.ToString("YYYY-MM-DD 00:00:00");
+                String correctFormat = tempDate.ToString("yyyy-MM-dd 00:00:00");
 
                 //check if correct format, length etc.
                 if (date != correctFormat) { error += "[!] Date is not in correct format\n"; }
