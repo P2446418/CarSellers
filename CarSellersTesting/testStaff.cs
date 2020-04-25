@@ -63,7 +63,7 @@ namespace CarSellersTesting
         public void StaffMobileNumberOK()
         {
             clsStaff aStaff = new clsStaff();
-            Int64 TestData = 07594273092;
+            string TestData = "7594273092";
             aStaff.MobileNumber = TestData;
             Assert.AreEqual(aStaff.MobileNumber, TestData);
         }
@@ -121,7 +121,7 @@ namespace CarSellersTesting
             String TFirstName = "John";
             String TSurname = "Smith";
             String TDOB = DateTime.Now.ToString();
-            String TMobileNumber = "12345678900";
+            String TMobileNumber = "1234567890";
             String TPosition = "Sales";
             bool TInOffice = true;
 

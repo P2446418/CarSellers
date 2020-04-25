@@ -24,10 +24,11 @@
             <br />
             <br />
             DOB :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="DOBTextBox" runat="server"></asp:TextBox>
-            &nbsp;&nbsp;&nbsp;&nbsp; Enter date in format DD/MM/YY
+            &nbsp;&nbsp;&nbsp;&nbsp; Enter date in format YYYY/MM/DD
             <br />
             <br />
             MobileNumber :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="MobileNumberTextBox" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp; Don't include the '07' at the Start of Your Mobile Number
             <br />
             <br />
             Position :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="PosTextBox" runat="server"></asp:TextBox>

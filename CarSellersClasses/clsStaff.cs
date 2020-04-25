@@ -148,7 +148,10 @@ namespace CarSellersClasses
             {
                 //parse string into datetime and back
                 DateTime tempDate = DateTime.Parse(date);
-                String correctFormat = tempDate.ToString();
+
+                if (tempDate > DateTime.Now) { return "[!] Date is in the future"; }
+
+                String correctFormat = tempDate.ToString("YYYY-MM-DD 00:00:00");
 
                 //check if correct format, length etc.
                 if (date != correctFormat) { error += "[!] Date is not in correct format\n"; }
