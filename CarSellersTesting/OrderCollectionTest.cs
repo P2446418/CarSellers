@@ -84,5 +84,105 @@ namespace CarSellersTesting
             // test that values are the same
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create class instance
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // create test data
+            clsOrder TestItem = new clsOrder();
+            // primary key variable
+            Int32 PrimaryKey = 0;
+            // set properties
+            TestItem.orderID = 1;
+            TestItem.numberPlate = "AB09ZXC";
+            TestItem.customerID = 5;
+            TestItem.price = 5000;
+            TestItem.quantity = 1;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            //set this order to the test data
+            AllOrders.ThisOrder = TestItem;
+            // add record
+            PrimaryKey = AllOrders.Add(); 
+            // set primary key of test data
+            TestItem.orderID = PrimaryKey;
+            // find record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            // test values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create class instance
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // create test data
+            clsOrder TestItem = new clsOrder();
+            // primary key variable
+            Int32 PrimaryKey = 0;
+            // set properties
+            TestItem.orderID = 1;
+            TestItem.numberPlate = "AB09ZXC";
+            TestItem.customerID = 5;
+            TestItem.price = 5000;
+            TestItem.quantity = 1;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            //set this order to the test data
+            AllOrders.ThisOrder = TestItem;
+            // add record
+            PrimaryKey = AllOrders.Add();
+            // set primary key of test data
+            TestItem.orderID = PrimaryKey;
+            // find record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            // delete record
+            AllOrders.Delete();
+            // find the record again
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            // test that record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            // create instance of class to test
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // create test data
+            clsOrder TestItem = new clsOrder();
+            // primary key var
+            Int32 PrimaryKey = 0;
+            // set properties for test data
+            TestItem.numberPlate = "AB09ZXC";
+            TestItem.customerID = 5;
+            TestItem.price = 5000;
+            TestItem.quantity = 1;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            // set ThisAddress to the test data
+            AllOrders.ThisOrder = TestItem;
+            // add the record
+            PrimaryKey = AllOrders.Add();
+            // set primary key of test data
+            TestItem.orderID = PrimaryKey;
+            // modify test data
+            TestItem.numberPlate = "AB08EXC";
+            TestItem.customerID = 4;
+            TestItem.price = 4000;
+            TestItem.quantity = 1;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            // set record based on new test data
+            AllOrders.ThisOrder = TestItem;
+            // update the record
+            AllOrders.Update();
+            // find record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            // test that ThisOrder matches the test data
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+
+        }
+
+
     }
 }

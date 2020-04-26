@@ -5,7 +5,10 @@ namespace CarSellersClasses
 {
     public class clsOrderCollection
     {
+        // private data member for list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        // private data member thisAddress
+        clsOrder mThisOrder = new clsOrder();
         public List<clsOrder> OrderList
         {
             get
@@ -31,7 +34,19 @@ namespace CarSellersClasses
 
             }
         }
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                // return private data
+                return mThisOrder;
+            }
+            set
+            {
+                // set private data
+                mThisOrder = value;
+            }
+        }
 
         // class constructor
         public clsOrderCollection()
@@ -63,6 +78,53 @@ namespace CarSellersClasses
                 // point to next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            
+            // adds record to database based on mThisOrder
+            // connect to database
+          
+            clsDataConnection DB = new clsDataConnection();
+
+            // set values
+            DB.AddParameter("@NumberPlate", mThisOrder.numberPlate);
+            DB.AddParameter("@CustomerID", mThisOrder.customerID);
+            DB.AddParameter("Quantity", mThisOrder.quantity);
+            DB.AddParameter("@Price", mThisOrder.price);
+            DB.AddParameter("@DateOrdered", mThisOrder.dateOrdered);
+            // return primary key of new record
+            return DB.Execute("dbo.sproc_OrderTable_Insert");
+            
+        }
+
+        public void Delete()
+        {
+            // deletes record pointed to by ThisOrder
+            // connect to db
+            clsDataConnection DB = new clsDataConnection();
+            // set parameters for stored procedure
+            DB.AddParameter("@OrderID", mThisOrder.orderID);
+            // execute procedure
+            DB.Execute("dbo.sproc_OrderTable_Delete");
+        }
+
+        public void Update()
+        {
+            // update an existing record based on ThisOrder value
+            // connect to database
+            clsDataConnection DB = new clsDataConnection();
+            // set parameters for stored procedure
+            DB.AddParameter("@OrderID", mThisOrder.orderID);
+            DB.AddParameter("@NumberPlate", mThisOrder.numberPlate);
+            DB.AddParameter("@CustomerID", mThisOrder.customerID);
+            DB.AddParameter("Quantity", mThisOrder.quantity);
+            DB.AddParameter("@Price", mThisOrder.price);
+            DB.AddParameter("@DateOrdered", mThisOrder.dateOrdered);
+            // execute stored procedure
+            DB.Execute("dbo.sproc_OrderTable_Update");
+            
         }
     }
 }
