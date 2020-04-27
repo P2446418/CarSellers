@@ -86,5 +86,14 @@ namespace CarSellersClasses
 
         }
 
+        public void erase(int CustomerId)
+        {
+            //this method actually deletes the user from the database
+            clsDataConnection database = new clsDataConnection();
+            database.AddParameter("@CustomerId", thisCustomer.CustomerID);
+
+            database.Execute("sproc_CustomerTable_Delete");
+        }
+
     }
 }
