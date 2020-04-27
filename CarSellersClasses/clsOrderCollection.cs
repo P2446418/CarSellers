@@ -51,33 +51,12 @@ namespace CarSellersClasses
         // class constructor
         public clsOrderCollection()
         {
-            // index variable
-            Int32 Index = 0;
-            // var for record count
-            Int32 RecordCount = 0;
             // data connection object
             clsDataConnection DB = new clsDataConnection();
             // execute stored procedure
             DB.Execute("dbo.sproc_OrderTable_SelectAll");
-            // get record count
-            RecordCount = DB.Count;
-            // while there are records
-            while (Index < RecordCount)
-            {
-                // create blank Order
-                clsOrder AnOrder = new clsOrder();
-                // read fields from current record
-                AnOrder.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrder.numberPlate = Convert.ToString(DB.DataTable.Rows[Index]["numberPlate"]);
-                AnOrder.customerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
-                AnOrder.quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["quantity"]);
-                AnOrder.price = Convert.ToDouble(DB.DataTable.Rows[Index]["price"]);
-                AnOrder.dateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["dateOrdered"]);
-                // add record to private list
-                mOrderList.Add(AnOrder);
-                // point to next record
-                Index++;
-            }
+            // populate array list with data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -125,6 +104,49 @@ namespace CarSellersClasses
             // execute stored procedure
             DB.Execute("dbo.sproc_OrderTable_Update");
             
+        }
+
+        public void ReportbyNumberPlate(string NumberPlate)
+        {
+            // filters order list by partial or full number plate
+            // connect to database
+            clsDataConnection DB = new clsDataConnection();
+            // send NumberPlate parameter to database
+            DB.AddParameter("@NumberPlate", NumberPlate);
+            // execute procedure
+            DB.Execute("dbo.sproc_OrderTable_FilterByNumberPlate");
+            // populate array list with data table
+            PopulateArray(DB);
+        }
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            // populates array list based on data table in parameter
+            // var for index
+            Int32 Index = 0;
+            // record count var
+            Int32 RecordCount;
+            // get record count
+            RecordCount = DB.Count;
+            // clear private list
+            mOrderList = new List<clsOrder>();
+            // while there are records to be processed
+            while (Index < RecordCount)
+            {
+                // create blank address
+                clsOrder AnOrder = new clsOrder();
+                // get fields from current record
+                AnOrder.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.numberPlate = Convert.ToString(DB.DataTable.Rows[Index]["numberPlate"]);
+                AnOrder.customerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
+                AnOrder.quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["quantity"]);
+                AnOrder.price = Convert.ToDouble(DB.DataTable.Rows[Index]["price"]);
+                AnOrder.dateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["dateOrdered"]);
+                // add record to private data member
+                mOrderList.Add(AnOrder);
+                // point to next record
+                Index++;
+            }
         }
     }
 }

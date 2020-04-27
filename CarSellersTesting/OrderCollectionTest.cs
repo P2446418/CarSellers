@@ -183,6 +183,30 @@ namespace CarSellersTesting
 
         }
 
+        [TestMethod]
+        public void ReportByNumberPlateMethodOK()
+        {
+            // create instance of unfiltered class
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // create instance of filtered orders
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            // apply blank string (all records returned)
+            FilteredOrders.ReportbyNumberPlate("");
+            // test that values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNumberPlateNoneFound()
+        {
+            // create instance of filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            // apply number plate that doesn't exist
+            FilteredOrders.ReportbyNumberPlate("xxxxxxx");
+            // test that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
 
     }
 }
