@@ -9,7 +9,7 @@ public partial class CustomerLayer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     public void outputErrors(String error)
@@ -66,4 +66,9 @@ public partial class CustomerLayer : System.Web.UI.Page
         
     }
 
+
+    protected void DefaultReturnButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }

@@ -18,6 +18,9 @@
             <asp:TextBox ID="errorOutput" runat="server" Font-Bold="True" Font-Size="12pt" Height="20px" ReadOnly="True" TextMode="MultiLine" Visible="False" Width="1000px"></asp:TextBox>
         </div>
         <br />
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Calibri" Font-Size="15pt" Text="Create An Account"></asp:Label>
+        <br />
+        <br />
         Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="NameTextBox" runat="server" Width="246px"></asp:TextBox>
         <br />
@@ -39,7 +42,8 @@
         &nbsp;&nbsp; Enter date in format YYYY-MM-DD<br />
         <br />
         <p>
-            <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="33px" />
+            <asp:Button ID="OkButton" runat="server" OnClick="OkButton_Click" Text="OK" Width="82px" BorderColor="White" BorderWidth="10px" Font-Size="Medium" Height="70px" />
+            <asp:Button ID="DefaultReturnButton" runat="server" BorderColor="White" BorderWidth="10px" Font-Size="Medium" Height="69px" OnClick="DefaultReturnButton_Click" Text="Back to Home Page" Width="225px" />
         </p>
     </form>
 

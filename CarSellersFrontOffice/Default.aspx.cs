@@ -1,6 +1,4 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,20 +10,13 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     //reveals customer login menu,
     protected void CustomerLoginButton_Click(object sender, EventArgs e)
-    { 
-        if (CustomerLoginPanel.Visible == true)
-        {
-            CustomerLoginPanel.Visible = false;
-        }
-        else
-        {
-            CustomerLoginPanel.Visible = true;
-        }
+    {
+        MultiView1.ActiveViewIndex = 0;
     }
 
     //writes the errors found in customer validation to the multiline textbox
@@ -45,18 +36,21 @@ public partial class _Default : System.Web.UI.Page
     protected void CustomerLogin_Click(object sender, EventArgs e)
     {
         //retrieve input data
+        clsCustomer tempCustomer = new clsCustomer();
         String InputEmail = CustomerEmailTextBox.Text;
         String InputID = CustomerIDTextBox.Text;
         String error = "";
-        //check if null
-        try
+       
+        //validate email
+        error = tempCustomer.ValidateEmail(InputEmail);
+
+        //validate ID as number
+        try { int testNum = Convert.ToInt32(InputID); }
+        catch
         {
-            error = sessionCustomer.ValidateEmail(InputEmail) + sessionCustomer.ValidateNumber(InputID);
+            error += "[!] Customer ID is not a valid number\n";
         }
-        catch (NullReferenceException)
-        {
-            error = "Fields have been left blank";
-        }
+
         //if there is error output to error box
         if (error != "")
         {
@@ -67,7 +61,6 @@ public partial class _Default : System.Web.UI.Page
             //attempt to find user
             // - if non-existent, output to error box
             // - otherwise set sessionCustomer to new customer
-            clsCustomer tempCustomer = new clsCustomer();
             bool exists = tempCustomer.Find(Convert.ToInt32(InputID));
             if (exists == true)
             {
@@ -113,7 +106,12 @@ public partial class _Default : System.Web.UI.Page
     //staff panel would contain the staff controls
     protected void StaffControlsButton_Click(object sender, EventArgs e)
     {
-        StaffPanel.Visible = true;
+        MultiView1.ActiveViewIndex = 1;
     }
 
+
+    protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
+    {
+
+    }
 }
