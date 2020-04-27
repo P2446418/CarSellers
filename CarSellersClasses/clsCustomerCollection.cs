@@ -15,11 +15,27 @@ namespace CarSellersClasses
         //customer will only be able to edit/modify their own instance
         //customer will only be able to delete their own instance
         // - which just sets toDelete to true, doesn't delete straight away in case there are pending orders
-        private clsCustomer thisCustomer;
+        //public clsCustomer thisCustomer;
 
-        public clsCustomer getCustomer()
+        List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
+
+        public List<clsCustomer> CustomerList
         {
-            return thisCustomer;
+            get { return mCustomerList; }
+            set { mCustomerList = value; }
+        }
+
+        public clsCustomer thisCustomer
+        {
+            get { return mThisCustomer; }
+            set { mThisCustomer = value; }
+        }
+
+        public int Count
+        {
+            get { return mCustomerList.Count; }
+            set { }
         }
 
         public void setCustomer(clsCustomer newCustomer)
@@ -27,6 +43,34 @@ namespace CarSellersClasses
             thisCustomer = newCustomer;
         }
 
+        //constructor
+        //retrieves all customers from the table so they can be viewed by staff
+        public clsCustomerCollection()
+        {
+            int index = 0;
+            int recordCount = 0;
+            clsDataConnection database = new clsDataConnection();
+            database.Execute("sproc_CustomerTable_SelectAll");
+            recordCount = database.Count;
+            //while records exist
+            while (index < recordCount)
+            {
+                clsCustomer aCustomer = new clsCustomer();
+                aCustomer.CustomerID = Convert.ToInt32(database.DataTable.Rows[index]["CustomerId"]);
+                aCustomer.name = Convert.ToString(database.DataTable.Rows[index]["FirstName"]);
+                aCustomer.surname = Convert.ToString(database.DataTable.Rows[index]["SurName"]);
+                aCustomer.DOB = Convert.ToDateTime(database.DataTable.Rows[index]["DateOfBirth"]);
+                aCustomer.PhoneNumber = Convert.ToInt32(database.DataTable.Rows[index]["PhoneNumber"]);
+                aCustomer.email = Convert.ToString(database.DataTable.Rows[index]["Email"]);
+                aCustomer.Address = Convert.ToString(database.DataTable.Rows[index]["Address"]);
+
+                mCustomerList.Add(aCustomer);
+                index++;
+            }
+
+        }
+
+        //individual methods
         public int add(clsCustomer newCustomer)
         {
             clsDataConnection database = new clsDataConnection();
