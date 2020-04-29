@@ -15,7 +15,7 @@ public partial class stockViewer : System.Web.UI.Page
         AStock = (clsStock)Session["AStock"];
 
         Response.Write(AStock.numberPlate);
-        Response.Write(AStock.productionYear);
+        Response.Write(AStock.productionDate);
         Response.Write(AStock.mileage);
         Response.Write(AStock.price);
         Response.Write(AStock.sold);

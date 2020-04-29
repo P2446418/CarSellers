@@ -25,12 +25,12 @@ namespace CarSellersTesting
         }
 
         [TestMethod]
-        public void ProdutionYearPropertyOk()
+        public void ProdutionDatePropertyOk()
         {
             clsStock stock = new clsStock();
             DateTime testData = DateTime.Now.Date;
-            stock.productionYear = testData;
-            Assert.AreEqual(stock.productionYear, testData);
+            stock.productionDate = testData;
+            Assert.AreEqual(stock.productionDate, testData);
         }
 
         [TestMethod]
@@ -69,5 +69,158 @@ namespace CarSellersTesting
             Assert.AreEqual(stock.modelName, testData);
         }
 
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            Assert.IsTrue(Found);
+
+
+        }
+        [TestMethod]
+        public void TestNumberPlateFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if(AStock.numberPlate != "Num43")
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
+        [TestMethod]
+        public void TestProductionDateFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if (AStock.productionDate != Convert.ToDateTime("29/02/2000"))
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
+        [TestMethod]
+        public void TestMileageFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if (AStock.numberPlate != "Num43")
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if (AStock.numberPlate != "Num43")
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
+        [TestMethod]
+        public void TestSoldFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if (AStock.numberPlate != "Num43")
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
+        [TestMethod]
+        public void TestModelNameFound()
+        {
+            clsStock AStock = new clsStock();
+
+            Boolean Found = false;
+
+            Boolean Ok = true;
+
+            String numberPlate = "Num43";
+
+            Found = AStock.Find(numberPlate);
+
+            if (AStock.numberPlate != "Num43")
+            {
+                Ok = false;
+            }
+
+
+            Assert.IsTrue(Ok);
+
+
+        }
     }
 }

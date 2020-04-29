@@ -20,7 +20,7 @@ public partial class AStock : System.Web.UI.Page
         clsStock AStock = new clsStock();
 
         AStock.numberPlate = txtNumberPlate.Text;
-        AStock.productionYear = DateTime.ParseExact(txtProductionYear.Text, "yyyy", null);
+        AStock.productionDate = DateTime.ParseExact(txtProductionYear.Text, "yyyy", null);
         AStock.mileage = Convert.ToInt32(txtMileage.Text);
         AStock.price = Convert.ToInt32(txtPrice.Text);
         AStock.sold = CheckBoxSold.Checked;
@@ -31,7 +31,7 @@ public partial class AStock : System.Web.UI.Page
 
         Response.Redirect("stockViewer.aspx");
     }
-
+     
 
 
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
