@@ -27,17 +27,64 @@ namespace CarSellersClasses
                 mProductionDate = value;
             }
         }
+        public int mileage
+        {
+            get
+            {
+                return mMileage;
+            }
+            set
+            {
+                mMileage = value;
+            }
+        }
+        public double price
+        {
+            get
+            {
+                return mPrice;
+            }
+            set
+            {
+                mPrice = value;
+            }
+        }
+        public bool sold
+        {
+            get
+            {
+                return mSold;
+            }
+            set
+            {
+                mSold = value;
+            }
+        }
+        public String modelName
+        {
+            get
+            {
+                return mModelName;
+            }
+            set
+            {
+                mModelName = value;
+            }
+        }
         private DateTime mProductionDate;
         private string mNumberPlate;
-        public int mileage;
-        public double price;
-        public bool sold;
-        public string modelName;
+        private int mMileage;
+        private double mPrice;
+        private bool mSold;
+        private string mModelName;
 
         public bool Find(String we)
         {
             numberPlate = "Num43";
             productionDate = Convert.ToDateTime("29/02/2000");
+            mileage = 41000;
+            price = 50000;
+            sold = true;
             return true;
         }
     }

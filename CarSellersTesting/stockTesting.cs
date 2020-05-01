@@ -143,7 +143,7 @@ namespace CarSellersTesting
 
             Found = AStock.Find(numberPlate);
 
-            if (AStock.numberPlate != "Num43")
+            if (AStock.mileage != 41000)
             {
                 Ok = false;
             }
@@ -166,7 +166,7 @@ namespace CarSellersTesting
 
             Found = AStock.Find(numberPlate);
 
-            if (AStock.numberPlate != "Num43")
+            if (AStock.price != 50000)
             {
                 Ok = false;
             }
@@ -189,7 +189,7 @@ namespace CarSellersTesting
 
             Found = AStock.Find(numberPlate);
 
-            if (AStock.numberPlate != "Num43")
+            if (AStock.sold != true)
             {
                 Ok = false;
             }
