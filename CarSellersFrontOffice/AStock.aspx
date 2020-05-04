@@ -16,6 +16,7 @@
         <div>
             number plate:
             <asp:TextBox ID="txtNumberPlate" runat="server"></asp:TextBox>
+            <asp:Button ID="ButtonFind" runat="server" Text="Button" OnClick="ButtonFind_Click" />
             <br />
             production year:
             <asp:TextBox ID="txtProductionYear" runat="server"></asp:TextBox>

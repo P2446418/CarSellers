@@ -1,13 +1,22 @@
 ﻿using System;
+using System.CodeDom;
 using CarSellersClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CarSellersTesting
 {
 
+
     [TestClass]
     public class StockTesting
     {
+
+        string productionDate = DateTime.Now.Date.ToString();
+        string sold = "true";
+        string modelName = "Wrexler";
+        string price = "60000";
+        string mileage = "5000";
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -76,7 +85,7 @@ namespace CarSellersTesting
 
             Boolean Found = false;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
@@ -93,11 +102,11 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
-            if(AStock.numberPlate != "Num43")
+            if(AStock.numberPlate != "JS47")
             {
                 Ok = false;
             }
@@ -116,7 +125,7 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
@@ -139,7 +148,7 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
@@ -162,7 +171,7 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
@@ -185,7 +194,7 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
@@ -208,11 +217,11 @@ namespace CarSellersTesting
 
             Boolean Ok = true;
 
-            String numberPlate = "Num43";
+            String numberPlate = "JS47";
 
             Found = AStock.Find(numberPlate);
 
-            if (AStock.numberPlate != "Num43")
+            if (AStock.modelName != "Wrexler 5")
             {
                 Ok = false;
             }
@@ -221,6 +230,376 @@ namespace CarSellersTesting
             Assert.IsTrue(Ok);
 
 
+        }
+        [TestMethod]
+
+        public void ProductionDateMaxPlusOne()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(1);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+
+        public void ProductionDateExtremeMin()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-100);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductionDateMinLessOne()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-31);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void ProductionDateExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(100);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductionDateMin()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-30);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void ProductionDateMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-29);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductionDateMaxLessOne()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-1);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductionDateMax()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductionDateMid()
+        {
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            DateTime TestDate;
+
+            TestDate = DateTime.Now.Date;
+
+            TestDate = TestDate.AddYears(-15);
+
+            string productionDate = TestDate.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void MileageMinLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMinPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMin()
+        {
+
+        }
+        [TestMethod]
+        public void MileageExtremeMin()
+        {
+
+        }
+        [TestMethod]
+        public void MileageExtremeMax()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMaxLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMaxPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMax()
+        {
+
+        }
+        [TestMethod]
+        public void MileageMid()
+        {
+
+        }
+       
+
+         [TestMethod]
+        public void priceMinLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void priceMinPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void priceMin()
+        {
+
+        }
+        [TestMethod]
+        public void priceExtremeMin()
+        {
+
+        }
+        [TestMethod]
+        public void priceExtremeMax()
+        {
+
+        }
+        [TestMethod]
+        public void priceMaxLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void priceMaxPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void priceMax()
+        {
+
+        }
+        [TestMethod]
+        public void priceMid()
+        {
+
+        }
+
+         [TestMethod]
+        public void soldMinLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void soldMinPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void soldMin()
+        {
+
+        }
+        [TestMethod]
+        public void soldExtremeMin()
+        {
+
+        }
+        [TestMethod]
+        public void soldExtremeMax()
+        {
+
+        }
+        [TestMethod]
+        public void soldMaxLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void soldMaxPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void soldMax()
+        {
+
+        }
+        [TestMethod]
+        public void soldMid()
+        {
+
+        }
+
+         [TestMethod]
+        public void ModelNameMinLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMinPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMin()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameExtremeMin()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameExtremeMax()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMaxLessOne()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMaxPlusOne()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMax()
+        {
+
+        }
+        [TestMethod]
+        public void ModelNameMid()
+        {
+
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStock AStock= new clsStock();
+            String error = "";
+            error = AStock.Valid(productionDate, mileage, price, sold,modelName);
+            Assert.AreEqual(error, "");
         }
     }
 }

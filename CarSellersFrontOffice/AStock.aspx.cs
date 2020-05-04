@@ -24,7 +24,7 @@ public partial class AStock : System.Web.UI.Page
         AStock.mileage = Convert.ToInt32(txtMileage.Text);
         AStock.price = Convert.ToInt32(txtPrice.Text);
         AStock.sold = CheckBoxSold.Checked;
-        AStock.modelName = txtNumberPlate.Text;
+        AStock.modelName = txtModelName.Text;
 
 
         Session["AStock"] = AStock;
@@ -37,5 +37,27 @@ public partial class AStock : System.Web.UI.Page
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void ButtonFind_Click(object sender, EventArgs e)
+    {
+        clsStock AStock = new clsStock();
+
+        string numberPlate;
+
+        Boolean found = false;
+
+        numberPlate = txtNumberPlate.Text;
+
+        found = AStock.Find(numberPlate);
+
+        if(found == true)
+        {
+            txtProductionYear.Text = Convert.ToString(AStock.productionDate);
+            txtMileage.Text = Convert.ToString(AStock.mileage);
+            txtPrice.Text = Convert.ToString(AStock.price);
+            CheckBoxSold.Checked = AStock.sold;
+            txtModelName.Text = AStock.modelName;
+        }
     }
 }
