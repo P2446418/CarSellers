@@ -78,5 +78,31 @@ namespace CarSellersTesting
             // test that values are the same
             Assert.AreEqual(AllOrderLine.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create class instance
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            // create test data
+            clsOrderLine TestItem = new clsOrderLine();
+            // primary key variable
+            Int32 PrimaryKey = 0;
+            // set properties
+            TestItem.orderLineID = 1;
+            TestItem.orderID = 1;
+            TestItem.staffID = 1;
+            TestItem.orderComplete = true;
+            //set this order to the test data
+            AllOrderLines.ThisOrderLine = TestItem;
+            // add record
+            PrimaryKey = AllOrderLines.Add();
+            // set primary key of test data
+            TestItem.orderID = PrimaryKey;
+            // find record
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            // test values are the same
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
+        }
     }
 }

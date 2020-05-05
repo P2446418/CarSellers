@@ -86,4 +86,34 @@ public partial class OrderList : System.Web.UI.Page
         }
         
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        // create instance of order collection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportbyNumberPlate(txtFilter.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        // set primary key
+        lstOrderList.DataValueField = "OrderID";
+        // set field to display
+        lstOrderList.DataTextField = "NumberPlate";
+        // bind data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        // create instance of order collection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportbyNumberPlate("");
+        // clear any filter to tidy interface
+        txtFilter.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        // set primary key
+        lstOrderList.DataValueField = "OrderID";
+        // set field to display
+        lstOrderList.DataTextField = "NumberPlate";
+        // bind data to list
+        lstOrderList.DataBind();
+    }
 }

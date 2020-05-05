@@ -8,6 +8,7 @@ namespace CarSellersClasses
     public class clsOrderLineCollection
     {
         List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
+        clsOrderLine mThisOrderLine = new clsOrderLine();
         public List<clsOrderLine> OrderLineList
         {
             get
@@ -33,7 +34,19 @@ namespace CarSellersClasses
 
             }
         }
-        public clsOrderLine ThisOrderLine { get; set; }
+        public clsOrderLine ThisOrderLine {
+            get
+            {
+                // return private data
+                return mThisOrderLine;
+            }
+            set
+            {
+                //set private data
+                mThisOrderLine = value;
+
+            }
+        }
 
         // class constructor
         public clsOrderLineCollection()
@@ -63,6 +76,23 @@ namespace CarSellersClasses
                 // point to next record
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            // adds record to database based on mThisOrder
+            // connect to database
+
+            clsDataConnection DB = new clsDataConnection();
+
+            // set values
+            DB.AddParameter("@NumberPlate", mThisOrderLine.numberPlate);
+            DB.AddParameter("@CustomerID", mThisOrder.customerID);
+            DB.AddParameter("Quantity", mThisOrder.quantity);
+            DB.AddParameter("@Price", mThisOrder.price);
+            DB.AddParameter("@DateOrdered", mThisOrder.dateOrdered);
+            // return primary key of new record
+            return DB.Execute("dbo.sproc_OrderTable_Insert");
         }
     }
 }

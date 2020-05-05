@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderList.aspx.cs" Inherits="OrderList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderLineList.aspx.cs" Inherits="OrderLineList" %>
 
 <!DOCTYPE html>
 
@@ -8,16 +8,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="height: 708px">
-            <asp:ListBox ID="lstOrderList" runat="server" Height="452px" Width="632px" OnSelectedIndexChanged="lstOrderList_SelectedIndexChanged"></asp:ListBox>
+        <div>
+            <asp:ListBox ID="lstOrderLineList" runat="server" Height="498px" Width="569px" OnSelectedIndexChanged="lstOrderLineList_SelectedIndexChanged"></asp:ListBox>
             <br />
             <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
             <asp:Button ID="btnEdit" runat="server" style="margin-left: 19px" Text="Edit" Width="83px" OnClick="btnEdit_Click" />
             <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" style="margin-left: 16px" />
             <br />
             <br />
-            <br />
-            Enter a Number Plate
+            Enter an Order ID
             <asp:TextBox ID="txtFilter" runat="server" style="margin-left: 24px"></asp:TextBox>
             <br />
             <br />
