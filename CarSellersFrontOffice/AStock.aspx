@@ -16,7 +16,9 @@
         <div>
             number plate:
             <asp:TextBox ID="txtNumberPlate" runat="server"></asp:TextBox>
-            <asp:Button ID="ButtonFind" runat="server" Text="Button" OnClick="ButtonFind_Click" />
+            <asp:Button ID="ButtonFind" runat="server" Text="Find" OnClick="ButtonFind_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             <br />
             production year:
             <asp:TextBox ID="txtProductionYear" runat="server"></asp:TextBox>
@@ -26,6 +28,7 @@
             <br />
             price:
             <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
             sold:
             <asp:CheckBox ID="CheckBoxSold" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
@@ -35,8 +38,8 @@
             <br />
             <br />
             &nbsp;
-            <asp:Button ID="ButtonOk" runat="server" OnClick="ButtonOk_Click" Text="Button" />
-            <input id="Button2" type="button" value="cancel" /></div>
+            <asp:Button ID="ButtonOk" runat="server" OnClick="ButtonOk_Click" Text="Ok" />
+            <input id="Button2" type="button" value="Cancel" /></div>
     </form>
 </body>
 </html>

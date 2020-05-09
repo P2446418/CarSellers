@@ -19,17 +19,36 @@ public partial class AStock : System.Web.UI.Page
     {
         clsStock AStock = new clsStock();
 
-        AStock.numberPlate = txtNumberPlate.Text;
-        AStock.productionDate = DateTime.ParseExact(txtProductionYear.Text, "yyyy", null);
-        AStock.mileage = Convert.ToInt32(txtMileage.Text);
-        AStock.price = Convert.ToInt32(txtPrice.Text);
-        AStock.sold = CheckBoxSold.Checked;
-        AStock.modelName = txtModelName.Text;
+        string numberPlate = txtNumberPlate.Text;
+        string productionDate = txtProductionYear.Text;
+        string mileage = txtMileage.Text;
+        string price = txtPrice.Text;
+        string sold = Convert.ToString(CheckBoxSold.Checked);
+        string modelName = txtModelName.Text;
+        string Error = "";
+        Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+        if (Error == "")
+        {
+            AStock.numberPlate = txtNumberPlate.Text;
+            AStock.productionDate = DateTime.ParseExact(txtProductionYear.Text, "dd/mm/yyyy", null);
+            AStock.mileage = Convert.ToInt32(txtMileage.Text);
+            AStock.price = Convert.ToInt32(txtPrice.Text);
+            AStock.sold = CheckBoxSold.Checked;
+            AStock.modelName = txtModelName.Text;
+
+            Session["AStock"] = AStock;
+
+            Response.Write("stockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
 
-        Session["AStock"] = AStock;
+       
 
-        Response.Redirect("stockViewer.aspx");
+
     }
      
 
@@ -53,7 +72,7 @@ public partial class AStock : System.Web.UI.Page
 
         if(found == true)
         {
-            txtProductionYear.Text = Convert.ToString(AStock.productionDate);
+            txtProductionYear.Text = (AStock.productionDate).ToString("dd/mm/yyyy");
             txtMileage.Text = Convert.ToString(AStock.mileage);
             txtPrice.Text = Convert.ToString(AStock.price);
             CheckBoxSold.Checked = AStock.sold;

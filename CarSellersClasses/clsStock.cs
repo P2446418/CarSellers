@@ -111,16 +111,80 @@ namespace CarSellersClasses
             string Error = "";
             DateTime DateTemp;
 
-            DateTemp = Convert.ToDateTime(productionDate);
-            if (DateTemp < DateTime.Now.Date.AddYears(-30)) 
+            try
             {
-                Error = Error + "The car may not be older than 30 years";
+                DateTemp = Convert.ToDateTime(productionDate);
+                if (DateTemp < DateTime.Now.Date.AddYears(-30))
+                {
+                    Error = Error + "The car cannot be older than 30 years ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The car cannot be from the future ";
+                }
             }
-            if (DateTemp > DateTime.Now.Date)
+            catch
             {
-                Error = Error + "The car cannot be from the future";
+                Error = Error + "invalid date entered, enter in the format dd/mm/yyyy ";
             }
-            return Error;
+           
+            try
+            {
+                int mileageTemp = Convert.ToInt32(mileage);
+                if (mileageTemp < 0)
+                {
+                    Error = Error + "The car cannot have a negative mileage ";
+                }
+                if (mileageTemp > 200000)
+                {
+                    Error = Error + "The car cannot have more than 200,000 miles travelled ";
+                }
+
+
+                if (mileageTemp < 0)
+                {
+                    Error = Error + "The car cannot have a negative mileage ";
+                }
+                if (mileageTemp > 200000)
+                {
+                    Error = Error + "The car cannot have more than 200,000 miles travelled ";
+                }
+            }
+            catch
+            {
+                Error = Error + "invalid mileage entered, enter a number only ";
+            }
+
+            try
+            {
+                int priceTemp = Convert.ToInt32(price);
+                if (priceTemp < 500)
+                {
+                    Error = Error + "The car cannot be valued at less than £500 ";
+                }
+                if (priceTemp > 100000)
+                {
+                    Error = Error + "The car cannot be valued at more than £100,000 ";
+                }
+            }
+           catch
+            {
+                Error = Error + "invalid price entered, enter a number only ";
+            }
+
+            if (modelName.Length < 1)
+            {
+                Error = Error + "The model name must be at least one character ";
+            }
+            
+            if (modelName.Length > 20)
+            {
+                Error = Error + "The model name must be fewer than twenty characters ";
+            }
+ 
+
+                return Error;
+            
         }
     }
 }

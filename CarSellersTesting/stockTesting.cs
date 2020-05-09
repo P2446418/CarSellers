@@ -247,7 +247,7 @@ namespace CarSellersTesting
 
             string productionDate = TestDate.ToString();
 
-            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+            Error = AStock.Valid( productionDate, mileage, price, sold, modelName);
 
             Assert.AreNotEqual(Error, "");
         }
@@ -413,46 +413,138 @@ namespace CarSellersTesting
         public void MileageMinLessOne()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testMileage = -1;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
+
         }
         [TestMethod]
         public void MileageMinPlusOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 1;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void MileageMin()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 0;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void MileageExtremeMin()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = -100;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void MileageExtremeMax()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 2000000;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void MileageMaxLessOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 199000;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void MileageMaxPlusOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 200001;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void MileageMax()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 200000;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void MileageMid()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            int testMileage = 100000;
+
+            string mileage = testMileage.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
        
 
@@ -460,138 +552,283 @@ namespace CarSellersTesting
         public void priceMinLessOne()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 499;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void priceMinPlusOne()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 501;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void priceMin()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 500;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void priceExtremeMin()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = -10000;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void priceExtremeMax()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 1000000;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void priceMaxLessOne()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 99999;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void priceMaxPlusOne()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 100001;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void priceMax()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 100000;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void priceMid()
         {
 
+            clsStock AStock = new clsStock();
+
+            String Error = "";
+
+            int testPrice = 50000;
+
+            string price = testPrice.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
 
          [TestMethod]
-        public void soldMinLessOne()
-        {
-
-        }
-        [TestMethod]
-        public void soldMinPlusOne()
-        {
-
-        }
-        [TestMethod]
         public void soldMin()
         {
+            clsStock AStock = new clsStock();
 
-        }
-        [TestMethod]
-        public void soldExtremeMin()
-        {
+            String Error = "";
 
-        }
-        [TestMethod]
-        public void soldExtremeMax()
-        {
+            bool testSold = false;
 
-        }
-        [TestMethod]
-        public void soldMaxLessOne()
-        {
+            string sold = testSold.ToString();
 
-        }
-        [TestMethod]
-        public void soldMaxPlusOne()
-        {
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
 
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void soldMax()
         {
+            clsStock AStock = new clsStock();
 
-        }
-        [TestMethod]
-        public void soldMid()
-        {
+            String Error = "";
 
+            bool testSold = true;
+
+            string sold = testSold.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
 
          [TestMethod]
         public void ModelNameMinLessOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            string testModelName = "";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void ModelNameMinPlusOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            string testModelName = "aa";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void ModelNameMin()
         {
+            clsStock AStock = new clsStock();
 
-        }
-        [TestMethod]
-        public void ModelNameExtremeMin()
-        {
+            String Error = "";
 
-        }
-        [TestMethod]
-        public void ModelNameExtremeMax()
-        {
+            string testModelName = "a";
 
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
+  
         [TestMethod]
         public void ModelNameMaxLessOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            string testModelName = "nineteencharacterss";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void ModelNameMaxPlusOne()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "twentyonecharactersss";
+
+            string testModelName = "";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void ModelNameMax()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            string testModelName = "twentycharacterssss";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void ModelNameMid()
         {
+            clsStock AStock = new clsStock();
 
+            String Error = "";
+
+            string testModelName = "tencharact";
+
+            string modelName = testModelName.ToString();
+
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
+
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void ValidMethodOK()
