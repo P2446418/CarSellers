@@ -129,7 +129,7 @@ namespace CarSellersTesting
 
             Found = AStock.Find(numberPlate);
 
-            if (AStock.productionDate != Convert.ToDateTime("29/02/2000"))
+            if (AStock.productionDate != Convert.ToDateTime("29/05/2000"))
             {
                 Ok = false;
             }
