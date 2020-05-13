@@ -88,6 +88,7 @@ namespace CarSellersClasses
                 mSurname = Convert.ToString(Database.DataTable.Rows[0]["Surname"]);
                 mDOB = DateTime.Parse(Convert.ToString(Database.DataTable.Rows[0]["DOB"]));
                 mMobileNumber = Convert.ToString(Database.DataTable.Rows[0]["MobileNumber"]);
+                mPosition = Convert.ToString(Database.DataTable.Rows[0]["Position"]);
                 mInOffice = Convert.ToBoolean(Database.DataTable.Rows[0]["InOffice"]);
                 mDelete = Convert.ToBoolean(Database.DataTable.Rows[0]["toDelete"]);
                 return true;
@@ -187,8 +188,8 @@ namespace CarSellersClasses
             try
             {
                 //convert NumberString into integer
-                String tempString = MobileNumberString.Replace(" ", "1");
-                int testMobileNumber = Convert.ToInt32(tempString);
+                //String tempString = MobileNumberString.Replace(" ", "1");
+                //int testMobileNumber = Convert.ToInt64(tempString);
             }
             catch (OverflowException e) //if number exceeds integer size limit
             {

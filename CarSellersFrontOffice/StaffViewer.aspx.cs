@@ -11,7 +11,7 @@ public partial class StaffViewer : System.Web.UI.Page
     {
         clsStaff aStaff = new clsStaff();
         aStaff = (clsStaff)Session["aStaff"];
-        Response.Write(aStaff.FirstName);
+        //Response.Write(aStaff.FirstName);
         if (aStaff != null)
         {
             IDAppearBox.Text = Convert.ToString(aStaff.StaffID);
