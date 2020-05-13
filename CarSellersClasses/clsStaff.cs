@@ -157,10 +157,10 @@ namespace CarSellersClasses
 
                 if (tempDate > DateTime.Now) { return "[!] Date is in the future"; }
 
-                String correctFormat = tempDate.ToString("yyyy-MM-dd 00:00:00");
+                string correctFormat = tempDate.ToString("yyyy-MM-dd 00:00:00");
 
                 //check if correct format, length etc.
-                if ((date + "00:00:00") != correctFormat) { error += "[!] Date is not in correct format\n"; }
+                if ((date + "00:00:00") != correctFormat) { error += ""; }
             }
             catch //date is not valid date
             {
