@@ -202,9 +202,40 @@ namespace CarSellersTesting
             // create instance of filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             // apply number plate that doesn't exist
-            FilteredOrders.ReportbyNumberPlate("xxxxxxx");
+            FilteredOrders.ReportbyNumberPlate("zzzzzzz");
             // test that there are no records
             Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNumberPlateTestDataFound()
+        {
+            // create instance of filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            // var for outcome
+            Boolean OK = true;
+            // apply a numberplate that doesn't exist
+            FilteredOrders.ReportbyNumberPlate("xxxxxxx");
+            // check that the records are found
+            if(FilteredOrders.Count == 2)
+            {
+                // check that first record is correct - ID 32
+                if(FilteredOrders.OrderList[0].orderID != 32)
+                {
+                    OK = false;
+                }
+                // check second record is ID 33
+                if(FilteredOrders.OrderList[1].orderID != 33)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            // test that there are no records
+            Assert.IsTrue(OK);
         }
 
 

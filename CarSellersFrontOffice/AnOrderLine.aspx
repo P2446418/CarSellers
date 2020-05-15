@@ -58,8 +58,11 @@
         <asp:CheckBox ID="chkOrderComplete" runat="server"></asp:CheckBox><br />
         <br />
         <br />
-        <asp:Button ID="btnOK" runat="server" OnClick ="btnOK_Click" Height="26px" Text="OK" Width="38px" />
+        <asp:Button ID="btnOK" runat="server" OnClick ="btnOK_Click" Height="26px" Text="OK" Width="38px" style="margin-top: 0px" />
         <asp:Button ID="btnCancel" runat="server" style="margin-left: 24px" Text="Cancel" />
+            <br />
+            <br />
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     </form>
     </body>
 </html>

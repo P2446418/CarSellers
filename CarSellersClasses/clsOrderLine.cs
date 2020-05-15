@@ -85,7 +85,7 @@ namespace CarSellersClasses
                 OrderIDTemp = Convert.ToInt32(orderID);
                 if(OrderIDTemp < 1)
                 {
-                    Error = Error + "The Order ID cannot be less than 0 : ";
+                    Error = Error + "The Order ID cannot be less than 1 : ";
                 }
                 if(OrderIDTemp > int.MaxValue)
                 {
@@ -102,7 +102,7 @@ namespace CarSellersClasses
                 StaffIDTemp = Convert.ToInt32(staffID);
                 if (StaffIDTemp < 1)
                 {
-                    Error = Error + "The Staff ID cannot be less than 0 : ";
+                    Error = Error + "The Staff ID cannot be less than 1 : ";
                 }
                 if (StaffIDTemp > 100)
                 {

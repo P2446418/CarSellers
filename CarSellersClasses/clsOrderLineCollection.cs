@@ -51,31 +51,12 @@ namespace CarSellersClasses
         // class constructor
         public clsOrderLineCollection()
         {
-            // index variable
-            Int32 Index = 0;
-            // var for record count
-            Int32 RecordCount = 0;
-            // data connection object
+            // object for data connection
             clsDataConnection DB = new clsDataConnection();
             // execute stored procedure
             DB.Execute("dbo.sproc_OrderLine_SelectAll");
-            // get record count
-            RecordCount = DB.Count;
-            // while there are records
-            while (Index < RecordCount)
-            {
-                // create blank Order
-                clsOrderLine AnOrderLine = new clsOrderLine();
-                // read fields from current record
-                AnOrderLine.orderLineID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineID"]);
-                AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrderLine.staffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
-                AnOrderLine.orderComplete = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderComplete"]);
-                // add record to private list
-                mOrderLineList.Add(AnOrderLine);
-                // point to next record
-                Index++;
-            }
+            // populate array list
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -86,13 +67,78 @@ namespace CarSellersClasses
             clsDataConnection DB = new clsDataConnection();
 
             // set values
-            DB.AddParameter("@NumberPlate", mThisOrderLine.numberPlate);
-            DB.AddParameter("@CustomerID", mThisOrder.customerID);
-            DB.AddParameter("Quantity", mThisOrder.quantity);
-            DB.AddParameter("@Price", mThisOrder.price);
-            DB.AddParameter("@DateOrdered", mThisOrder.dateOrdered);
+            DB.AddParameter("@OrderID", mThisOrderLine.orderLineID);
+            DB.AddParameter("StaffID", mThisOrderLine.staffID);
+            DB.AddParameter("@OrderComplete", mThisOrderLine.orderComplete);
             // return primary key of new record
-            return DB.Execute("dbo.sproc_OrderTable_Insert");
+            return DB.Execute("dbo.sproc_OrderLineTable_Insert");
+        }
+
+        public void Delete()
+        {
+            // deletes record pointed to by thisOrderLine
+            // connect to database
+            clsDataConnection DB = new clsDataConnection();
+            // set parameters for stored procedure
+            DB.AddParameter("@OrderLineID", mThisOrderLine.orderLineID);
+            // execute stored proecdure
+            DB.Execute("dbo.sproc_OrderLineTable_Delete");
+        }
+
+        public void Update()
+        {
+            // update existing record based on ThisOrderLine
+            // connect to DB
+            clsDataConnection DB = new clsDataConnection();
+            // set stored procedure parameters
+            DB.AddParameter("@OrderLineID", mThisOrderLine.orderLineID);
+            DB.AddParameter("@OrderID", mThisOrderLine.orderID);
+            DB.AddParameter("@StaffID", mThisOrderLine.staffID);
+            DB.AddParameter("@OrderComplete", mThisOrderLine.orderComplete);
+            // execute the procedure
+            DB.Execute("dbo.sproc_OrderLineTable_Update");
+        }
+
+        public void ReportbyOrderID(int OrderID)
+        {
+            // filters the list based on OrderID
+            // connect to DB
+            clsDataConnection DB = new clsDataConnection();
+            // add parameter to procedure
+            DB.AddParameter("@OrderID", OrderID);
+            // execute stored procedure
+            DB.Execute("dbo.sproc_OrderLineTable_FilterbyOrderID");
+            // populate array list with DB data
+            PopulateArray(DB);
+        }
+
+
+        public void PopulateArray(clsDataConnection DB)
+        {
+            // populates array list based on data table in parameter
+            // var for index
+            Int32 Index = 0;
+            // record count var
+            Int32 RecordCount;
+            // get record count
+            RecordCount = DB.Count;
+            // clear private list
+            mOrderLineList = new List<clsOrderLine>();
+            // while there are records to be processed
+            while (Index < RecordCount)
+            {
+                // create blank orderline
+                clsOrderLine AnOrderLine = new clsOrderLine();
+                // get fields from current record
+                AnOrderLine.orderLineID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineID"]);
+                AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrderLine.staffID = Convert.ToInt32(DB.DataTable.Rows[Index]["staffID"]);
+                AnOrderLine.orderComplete = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderComplete"]);
+                // add record to private data member
+                mOrderLineList.Add(AnOrderLine);
+                // point to next record
+                Index++;
+            }
         }
     }
 }

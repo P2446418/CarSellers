@@ -47,7 +47,6 @@ public partial class AnOrder : System.Web.UI.Page
     protected void OkBtn_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        string OrderID = txtOrderID.Text;
         string NumberPlate = txtNumberPlate.Text;
         string CustomerID = txtCustID.Text;
         string Quantity = txtQuantity.Text;
