@@ -89,6 +89,7 @@ namespace CarSellersClasses
             //updates user data on the database
             clsDataConnection database = new clsDataConnection();
 
+            database.AddParameter("@CustomerId", thisCustomer.CustomerID);
             database.AddParameter("@FirstName", thisCustomer.name);
             database.AddParameter("@SurName", thisCustomer.surname);
             database.AddParameter("@DateOfBirth", thisCustomer.DOB);
@@ -118,6 +119,7 @@ namespace CarSellersClasses
 
             clsDataConnection database = new clsDataConnection();
 
+            database.AddParameter("@CustomerId", thisCustomer.CustomerID);
             database.AddParameter("@FirstName", thisCustomer.name);
             database.AddParameter("@SurName", thisCustomer.surname);
             database.AddParameter("@DateOfBirth", thisCustomer.DOB);
