@@ -102,9 +102,10 @@ namespace CarSellersClasses
             }
 
         }
-
+        // test validity of data
         public string Valid(string dateOrdered, string numberPlate, string customerID, string quantity, string price)
         {
+            // temp vars
             String Error = "";
             DateTime DateTemp;
             int CustomerIDTemp;

@@ -93,13 +93,16 @@ public partial class AnOrderLine : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        // new orderline
         clsOrderLine anOrderLine = new clsOrderLine();
         Int32 OrderLineID;
         Boolean Found = false;
         OrderLineID = Convert.ToInt32(txtOrderLineID.Text);
+        // find specified orderline
         Found = anOrderLine.Find(OrderLineID);
         if (Found == true)
         {
+            // display orderline
             txtOrderID.Text = anOrderLine.orderID.ToString();
             txtStaffID.Text = anOrderLine.staffID.ToString();
             chkOrderComplete.Checked = anOrderLine.orderComplete;

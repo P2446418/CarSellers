@@ -9,6 +9,7 @@ public partial class OrderViewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // display session order
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
         Response.Write(AnOrder.orderID);

@@ -4,6 +4,7 @@ namespace CarSellersClasses
 {
     public class clsOrderLine
     {
+        // private property vars
         private int mOrderLineID;
         private int mOrderID;
         private int mStaffID;
@@ -74,7 +75,7 @@ namespace CarSellersClasses
                 return false;
             }
         }
-
+        // test validity of properties
         public string Valid(string orderID, string staffID)
         {
             int OrderIDTemp;

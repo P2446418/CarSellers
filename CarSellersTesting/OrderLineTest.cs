@@ -7,13 +7,14 @@ namespace CarSellersTesting
     [TestClass]
     public class OrderLineTest
     {
-
+        // global test variables
         string OrderID = "1";
         string StaffID = "1";
 
         [TestMethod]
         public void InstanceOk()
         {
+            // check that instance is ok
             clsOrderLine AnOrderLine = new clsOrderLine();
             Assert.IsNotNull(AnOrderLine);
         }
@@ -21,6 +22,7 @@ namespace CarSellersTesting
         [TestMethod]
         public void OrderLineIDPropertyOK()
         {
+            // test orderlineID property
             clsOrderLine new_order = new clsOrderLine();
             int TestData = 1;
             new_order.orderLineID = TestData;
@@ -30,6 +32,7 @@ namespace CarSellersTesting
         [TestMethod]
         public void OrderIDPropertyOK()
         {
+            // test OrderID property
             clsOrderLine new_order = new clsOrderLine();
             int TestData = 1;
             new_order.orderID = TestData;
@@ -39,12 +42,13 @@ namespace CarSellersTesting
         [TestMethod]
         public void StaffIDPropertyOK()
         {
+            // test staff ID property
             clsOrderLine new_order = new clsOrderLine();
             int TestData = 1;
             new_order.staffID = TestData;
             Assert.AreEqual(new_order.staffID, TestData);
         }
-
+        // test order complete property
         [TestMethod]
         public void OrderCompletePropertyOK()
         {
@@ -54,7 +58,7 @@ namespace CarSellersTesting
             Assert.AreEqual(new_order.orderComplete, TestData);
         }
 
-
+        // test find method
         [TestMethod]
         public void FindMethodOk()
         {
@@ -64,7 +68,7 @@ namespace CarSellersTesting
             Found = new_orderline.Find(orderLineID);
             Assert.IsTrue(Found);
         }
-
+        // test order line id found
         [TestMethod]
         public void TestOrderLineIDFound()
         {
@@ -79,7 +83,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(Found);
         }
-
+        // test OrderID found
         [TestMethod]
         public void TestOrderIDFound()
         {
@@ -94,7 +98,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(Found);
         }
-
+        // test staff ID found
         [TestMethod]
         public void TestStaffIDFound()
         {
@@ -109,7 +113,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(Found);
         }
-
+        // test order complete found
         [TestMethod]
         public void TestOrderCompleteFound()
         {
@@ -124,7 +128,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(Found);
         }
-
+        // test valid method works
         [TestMethod]
         public void ValidMethodOk()
         {
@@ -135,7 +139,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
-
+        // test one less than minimum acceptable value
         [TestMethod]
         public void OrderIDMinLessOne()
         {
@@ -146,6 +150,7 @@ namespace CarSellersTesting
 
             Assert.AreNotEqual(Error, "");
         }
+        // test min value
         [TestMethod]
         public void OrderIDMin()
         {
@@ -156,6 +161,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
+        // test max value less one
         [TestMethod]
         public void OrderIDMaxLessOne()
         {
@@ -167,6 +173,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
+        // test max value
         [TestMethod]
         public void OrderIDMax()
         {
@@ -178,6 +185,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
+        // test max plus one
         [TestMethod]
         public void OrderIDMaxPlusOne()
         {
@@ -188,6 +196,7 @@ namespace CarSellersTesting
 
             Assert.AreNotEqual(Error, "");
         }
+        // test min less one
         [TestMethod]
         public void StaffIDMinLessOne()
         {
@@ -198,6 +207,7 @@ namespace CarSellersTesting
 
             Assert.AreNotEqual(Error, "");
         }
+        // test min staff id value
         [TestMethod]
         public void StaffIDMin()
         {
@@ -208,6 +218,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
+        // test staff id max less one
         [TestMethod]
         public void StaffIDMaxLessOne()
         {
@@ -218,6 +229,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
+        // test max staff id value
         [TestMethod]
         public void StaffIDMax()
         {

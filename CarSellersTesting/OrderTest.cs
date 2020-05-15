@@ -14,13 +14,14 @@ namespace CarSellersTesting
         string Quantity = "1";
         string Price = "1";
 
+        // test clsOrder instance works
         [TestMethod]
         public void InstanceOk()
         {
             clsOrder anOrder = new clsOrder();
             Assert.IsNotNull(anOrder);
         }
-
+        // test order id property works
         [TestMethod]
         public void OrderIDPropertyOK()
         {
@@ -29,7 +30,7 @@ namespace CarSellersTesting
             new_order.orderID = TestData;
             Assert.AreEqual(new_order.orderID, TestData);
         }
-
+        // test date ordered prop works
         [TestMethod]
         public void DateOrderedPropertyOK()
         {
@@ -39,7 +40,7 @@ namespace CarSellersTesting
             Assert.AreEqual(new_order.dateOrdered, test_data);
 
         }
-
+        // test number plate works
         [TestMethod]
         public void NumberPlatePropertyOK()
         {
@@ -48,7 +49,7 @@ namespace CarSellersTesting
             new_order.numberPlate = test_data;
             Assert.AreEqual(new_order.numberPlate, test_data);
         }
-
+        // test customer id works
         [TestMethod]
         public void CustomerIDPropertyOK()
         {
@@ -57,7 +58,7 @@ namespace CarSellersTesting
             new_order.customerID = test_data;
             Assert.AreEqual(new_order.customerID, test_data);
         }
-
+        //test quantity property works
         [TestMethod]
         public void QuantityPropertyOK()
         {
@@ -66,7 +67,7 @@ namespace CarSellersTesting
             new_order.quantity = test_data;
             Assert.AreEqual(new_order.quantity, test_data);
         }
-
+        // test price works
         [TestMethod]
         public void PricePropertyOK()
         {
@@ -75,7 +76,7 @@ namespace CarSellersTesting
             new_order.price = test_data;
             Assert.AreEqual(new_order.price, test_data);
         }
-
+        // test find method works
         [TestMethod]
         public void FindMethodOk()
         {
@@ -85,7 +86,7 @@ namespace CarSellersTesting
             Found = new_order.Find(orderID);
             Assert.IsTrue(Found);
         }
-
+        // test order id found
         [TestMethod]
         public void TestOrderIDFound()
         {
@@ -100,7 +101,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test order date found
         [TestMethod]
         public void TestOrderDateFound()
         {
@@ -115,7 +116,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test number plate found
         [TestMethod]
         public void TestNumberPlateFound()
         {
@@ -130,7 +131,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test customer id found
         [TestMethod]
         public void TestCustomerIDFound()
         {
@@ -145,7 +146,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test quantity found
         [TestMethod]
         public void TestQuantityFound()
         {
@@ -160,7 +161,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test price found
         [TestMethod]
         public void TestPriceFound()
         {
@@ -175,7 +176,7 @@ namespace CarSellersTesting
             }
             Assert.IsTrue(OK);
         }
-
+        // test valid method works
         [TestMethod]
         public void ValidMethodOK()
         {
@@ -186,7 +187,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test extreme min date ordered
         [TestMethod]
         public void dateOrderedExtremeMin()
         {
@@ -199,7 +200,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test dateordered low min
         [TestMethod]
         public void dateOrderedMinLessOne()
         {
@@ -212,7 +213,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test min date ordered
         [TestMethod]
         public void dateOrderedMin()
         {
@@ -224,7 +225,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test date ordered min plus one
         [TestMethod]
         public void dateOrderedMinPlusOne()
         {
@@ -237,7 +238,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test date ordered max extreme
         [TestMethod]
         public void dateOrderedExtremeMax()
         {
@@ -250,7 +251,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test invalid date
         [TestMethod]
         public void dateOrderedInvalidData()
         {
@@ -260,7 +261,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test low out of bounds number plate
         [TestMethod]
         public void numberPlateMinLessOne()
         {
@@ -270,7 +271,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test min number plate
         [TestMethod]
         public void numberPlateMin()
         {
@@ -280,7 +281,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test low number plate val
         [TestMethod]
         public void numberPlateMinPlusOne()
         {
@@ -290,7 +291,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test number plate upper bound
         [TestMethod]
         public void numberPlateMaxLessOne()
         {
@@ -300,7 +301,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test max number plate
         [TestMethod]
         public void numberPlateMax()
         {
@@ -310,7 +311,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test upper out of bounds number plate
         [TestMethod]
         public void numberPlateMaxPlusOne()
         {
@@ -320,7 +321,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test customer id out of bounds low
         [TestMethod]
         public void customerIDMinLessOne()
         {
@@ -330,7 +331,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // minimum customer id test
         [TestMethod]
         public void customerIDMin()
         {
@@ -340,7 +341,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test low range customer id
         [TestMethod]
         public void customerIDMinPlusOne()
         {
@@ -350,7 +351,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test high range customer id
         [TestMethod]
         public void customerIDMaxLessOne()
         {
@@ -360,7 +361,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test max customer id
         [TestMethod]
         public void customerIDMax()
         {
@@ -370,7 +371,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test out of bounds - high customer id
         [TestMethod]
         public void customerIDMaxPlusOne()
         {
@@ -380,7 +381,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test out of bounds quantity
         [TestMethod]
         public void quantityMinLessOne()
         {
@@ -390,7 +391,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test min quantity
         [TestMethod]
         public void quantityMin()
         {
@@ -400,7 +401,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test low quantity
         [TestMethod]
         public void quantityMinPlusOne()
         {
@@ -410,7 +411,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test high quantity
         [TestMethod]
         public void quantityMaxLessOne()
         {
@@ -420,7 +421,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test max quantity
         [TestMethod]
         public void quantityMax()
         {
@@ -430,7 +431,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test high out of bounds quantity
         [TestMethod]
         public void quantityMaxPlusOne()
         {
@@ -440,7 +441,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test mid range quantity
         [TestMethod]
         public void quantityMid()
         {
@@ -450,7 +451,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test low out of bounds price
         [TestMethod]
         public void PriceMinLessOne()
         {
@@ -460,7 +461,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreNotEqual(Error, "");
         }
-
+        // test min price
         [TestMethod]
         public void PriceMin()
         {
@@ -470,7 +471,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test low price
         [TestMethod]
         public void PriceMinPlusOne()
         {
@@ -480,7 +481,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test mid range price
         [TestMethod]
         public void PriceMid()
         {
@@ -490,7 +491,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test high range price
         [TestMethod]
         public void PriceMaxLessOne()
         {
@@ -500,7 +501,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test max price
         [TestMethod]
         public void PriceMax()
         {
@@ -510,7 +511,7 @@ namespace CarSellersTesting
             Error = anOrder.Valid(DateOrdered, NumberPlate, CustomerID, Quantity, Price);
             Assert.AreEqual(Error, "");
         }
-
+        // test high out of bounds price
         [TestMethod]
         public void PriceMaxPlusOne()
         {
