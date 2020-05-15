@@ -30,4 +30,28 @@ public partial class stockList : System.Web.UI.Page
     {
 
     }
+
+    protected void addButton_Click(object sender, EventArgs e)
+    {
+        Session["numberPlate"] = -1;
+
+        Response.Redirect("AStock.aspx");
+    }
+
+    protected void deleteButton_Click(object sender, EventArgs e)
+    {
+        string numberPlate ;
+
+        if (lstStockList.SelectedIndex != -1)
+        {
+            numberPlate = lstStockList.SelectedValue;
+            Session["numberPlate"] = numberPlate;
+
+            Response.Redirect("deleteAddress.aspx");
+        }
+        else
+        {
+            lblError.Text = "please select a record to delete from the list";
+        }
+    }
 }

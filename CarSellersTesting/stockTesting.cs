@@ -838,5 +838,85 @@ namespace CarSellersTesting
             error = AStock.Valid(productionDate, mileage, price, sold,modelName);
             Assert.AreEqual(error, "");
         }
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            clsStockCollection allStock = new clsStockCollection();
+
+            clsStock testStock = new clsStock();
+
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            string primaryKey = "";
+
+
+            testStock.numberPlate = finalString;
+            testStock.productionDate = DateTime.Now.Date;
+            testStock.mileage = 20000;
+            testStock.price = 5000;
+            testStock.sold = false;
+            testStock.modelName = "model";
+
+            allStock.thisStock = testStock;
+
+            primaryKey = allStock.Add().ToString();
+
+            testStock.numberPlate = primaryKey;
+
+            allStock.thisStock.Find(primaryKey);
+
+            Assert.AreEqual(allStock.thisStock, testStock);
+        }
+        [TestMethod]
+        public void deleteMethodOk()
+        {
+            clsStockCollection allStock = new clsStockCollection();
+
+            clsStock testStock = new clsStock();
+
+            string primaryKey = "";
+
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            testStock.numberPlate = finalString;
+            testStock.productionDate = DateTime.Now.Date;
+            testStock.mileage = 20000;
+            testStock.price = 5000;
+            testStock.sold = false;
+            testStock.modelName = "model";
+
+            allStock.thisStock = testStock;
+
+            primaryKey = allStock.Add().ToString();
+
+            testStock.numberPlate = primaryKey;
+
+            allStock.thisStock.Find(primaryKey);
+
+            allStock.Delete();
+
+            Boolean Found = allStock.thisStock.Find(primaryKey);
+
+            Assert.IsFalse(Found);
+        }
+
     }
 }

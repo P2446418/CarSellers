@@ -36,9 +36,11 @@ public partial class AStock : System.Web.UI.Page
             AStock.sold = CheckBoxSold.Checked;
             AStock.modelName = txtModelName.Text;
 
-            Session["AStock"] = AStock;
+            clsStockCollection stockList = new clsStockCollection();
 
-            Response.Write("stockViewer.aspx");
+            stockList.Add();
+
+            Response.Redirect("stockViewer.aspx");
         }
         else
         {

@@ -7,10 +7,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CarSellersTesting
 {
 
+   
+
     [TestClass]
     public class stockCollectionTesting
     {
-        [TestMethod]
+
+       [TestMethod]
         public void InstanceOk()
         {
             clsStockCollection AllStock = new CarSellersClasses.clsStockCollection();
@@ -81,6 +84,9 @@ namespace CarSellersTesting
 
             Assert.AreEqual(allStock.Count, testList.Count);
         }
+
+     
+
 
     }
 }

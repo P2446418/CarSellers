@@ -185,6 +185,7 @@ public class clsDataConnection
         dataChannel.Fill(dataTable);
         //close the connection
         connectionToDB.Close();
+
         //return the result of the stored procedure
         return Convert.ToInt32(returnValue.Value);
     }

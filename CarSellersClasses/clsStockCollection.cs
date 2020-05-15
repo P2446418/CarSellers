@@ -5,6 +5,7 @@ namespace CarSellersClasses
 {
     public class clsStockCollection
     {
+        clsStock mThisStock = new clsStock();
         List<clsStock> mStockList = new List<clsStock>();
         public clsStockCollection()
         {
@@ -58,6 +59,39 @@ namespace CarSellersClasses
 
             }
         }
-        public clsStock thisStock { get; set; }
+        public clsStock thisStock
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@numberPlate", mThisStock.numberPlate);
+            DB.AddParameter("@productionDate", mThisStock.productionDate);
+            DB.AddParameter("@mileage", mThisStock.mileage);
+            DB.AddParameter("@price", mThisStock.price);
+            DB.AddParameter("@sold", mThisStock.sold);
+            DB.AddParameter("@modelName", mThisStock.modelName);
+
+            return DB.Execute("sproc_stockTable_insert");
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@numberPlate", mThisStock.numberPlate);
+
+            DB.Execute("sproc_stockTable_delete");
+
+        }
     }
 }
