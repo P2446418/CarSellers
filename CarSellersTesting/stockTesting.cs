@@ -106,7 +106,7 @@ namespace CarSellersTesting
 
             Found = AStock.Find(numberPlate);
 
-            if(AStock.numberPlate != "JS47")
+            if (AStock.numberPlate != "JS47")
             {
                 Ok = false;
             }
@@ -247,7 +247,7 @@ namespace CarSellersTesting
 
             string productionDate = TestDate.ToString();
 
-            Error = AStock.Valid( productionDate, mileage, price, sold, modelName);
+            Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
 
             Assert.AreNotEqual(Error, "");
         }
@@ -546,9 +546,9 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
-       
 
-         [TestMethod]
+
+        [TestMethod]
         public void priceMinLessOne()
         {
 
@@ -693,7 +693,7 @@ namespace CarSellersTesting
             Assert.AreEqual(Error, "");
         }
 
-         [TestMethod]
+        [TestMethod]
         public void soldMin()
         {
             clsStock AStock = new clsStock();
@@ -724,7 +724,7 @@ namespace CarSellersTesting
             Assert.AreEqual(Error, "");
         }
 
-         [TestMethod]
+        [TestMethod]
         public void ModelNameMinLessOne()
         {
             clsStock AStock = new clsStock();
@@ -769,7 +769,7 @@ namespace CarSellersTesting
 
             Assert.AreEqual(Error, "");
         }
-  
+
         [TestMethod]
         public void ModelNameMaxLessOne()
         {
@@ -833,90 +833,16 @@ namespace CarSellersTesting
         [TestMethod]
         public void ValidMethodOK()
         {
-            clsStock AStock= new clsStock();
+            clsStock AStock = new clsStock();
             String error = "";
-            error = AStock.Valid(productionDate, mileage, price, sold,modelName);
+            error = AStock.Valid(productionDate, mileage, price, sold, modelName);
             Assert.AreEqual(error, "");
         }
-        [TestMethod]
-        public void AddMethodOk()
-        {
-            clsStockCollection allStock = new clsStockCollection();
-
-            clsStock testStock = new clsStock();
-
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-
-            string primaryKey = "";
+       
+       
 
 
-            testStock.numberPlate = finalString;
-            testStock.productionDate = DateTime.Now.Date;
-            testStock.mileage = 20000;
-            testStock.price = 5000;
-            testStock.sold = false;
-            testStock.modelName = "model";
-
-            allStock.thisStock = testStock;
-
-            primaryKey = allStock.Add().ToString();
-
-            testStock.numberPlate = primaryKey;
-
-            allStock.thisStock.Find(primaryKey);
-
-            Assert.AreEqual(allStock.thisStock, testStock);
-        }
-        [TestMethod]
-        public void deleteMethodOk()
-        {
-            clsStockCollection allStock = new clsStockCollection();
-
-            clsStock testStock = new clsStock();
-
-            string primaryKey = "";
-
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-
-            testStock.numberPlate = finalString;
-            testStock.productionDate = DateTime.Now.Date;
-            testStock.mileage = 20000;
-            testStock.price = 5000;
-            testStock.sold = false;
-            testStock.modelName = "model";
-
-            allStock.thisStock = testStock;
-
-            primaryKey = allStock.Add().ToString();
-
-            testStock.numberPlate = primaryKey;
-
-            allStock.thisStock.Find(primaryKey);
-
-            allStock.Delete();
-
-            Boolean Found = allStock.thisStock.Find(primaryKey);
-
-            Assert.IsFalse(Found);
-        }
-
+       
+        
     }
 }

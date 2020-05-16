@@ -93,5 +93,20 @@ namespace CarSellersClasses
             DB.Execute("sproc_stockTable_delete");
 
         }
+
+        
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@numberPlate", mThisStock.numberPlate);
+            DB.AddParameter("@productionDate", mThisStock.productionDate);
+            DB.AddParameter("@mileage", mThisStock.mileage);
+            DB.AddParameter("@price", mThisStock.price);
+            DB.AddParameter("@sold", mThisStock.sold);
+            DB.AddParameter("@modelName", mThisStock.modelName);
+
+            DB.Execute("sproc_stockTable_update");
+        }
     }
 }

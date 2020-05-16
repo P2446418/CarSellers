@@ -22,7 +22,7 @@ public partial class stockList : System.Web.UI.Page
 
         lstStockList.DataValueField = "numberPlate";
 
-        lstStockList.DataTextField = "numberPlate";
+        lstStockList.DataTextField = "modelName";
 
         lstStockList.DataBind();
     }
@@ -47,11 +47,31 @@ public partial class stockList : System.Web.UI.Page
             numberPlate = lstStockList.SelectedValue;
             Session["numberPlate"] = numberPlate;
 
-            Response.Redirect("deleteAddress.aspx");
+            Response.Redirect("deleteStock.aspx");
         }
         else
         {
             lblError.Text = "please select a record to delete from the list";
+        }
+    }
+
+
+
+
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string numberPlate;
+        if (lstStockList.SelectedIndex != -1)
+        {
+            numberPlate = lstStockList.SelectedValue;
+            Session["numberPlate"] = numberPlate;
+            Response.Redirect("AStock.aspx");
+        }
+        else
+        {
+            lblError.Text = "please select a record from the list";
         }
     }
 }

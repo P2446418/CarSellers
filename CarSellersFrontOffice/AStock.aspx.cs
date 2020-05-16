@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,33 @@ using CarSellersClasses;
 
 public partial class AStock : System.Web.UI.Page
 {
+    string numberPlate;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        numberPlate = Convert.ToString(Session["numberPlate"]);
+        if (IsPostBack == false)
+        {
+            if (numberPlate != "")
+            {
+                DisplayStock();
+            }
+        }
     }
 
+    private void DisplayStock()
+    {
+        clsStockCollection stockList = new clsStockCollection();
 
+        stockList.thisStock.Find(numberPlate);
+
+        txtNumberPlate.Text = stockList.thisStock.numberPlate;
+        txtProductionYear.Text = stockList.thisStock.productionDate.ToString("dd/mm/yyyy");
+        txtMileage.Text = stockList.thisStock.mileage.ToString();
+        txtPrice.Text = stockList.thisStock.price.ToString();
+        CheckBoxSold.Checked = stockList.thisStock.sold;
+        txtModelName.Text = stockList.thisStock.modelName;
+
+    }
 
     protected void ButtonOk_Click(object sender, EventArgs e)
     {
@@ -29,7 +51,7 @@ public partial class AStock : System.Web.UI.Page
         Error = AStock.Valid(productionDate, mileage, price, sold, modelName);
         if (Error == "")
         {
-            AStock.numberPlate = txtNumberPlate.Text;
+            AStock.numberPlate = numberPlate;
             AStock.productionDate = DateTime.ParseExact(txtProductionYear.Text, "dd/mm/yyyy", null);
             AStock.mileage = Convert.ToInt32(txtMileage.Text);
             AStock.price = Convert.ToInt32(txtPrice.Text);
@@ -38,7 +60,19 @@ public partial class AStock : System.Web.UI.Page
 
             clsStockCollection stockList = new clsStockCollection();
 
-            stockList.Add();
+            if (numberPlate == "")
+            {
+                stockList.thisStock = AStock;
+                stockList.Add();
+            }
+            else
+            {
+                stockList.thisStock.Find(numberPlate);
+                stockList.thisStock = AStock;
+                stockList.Update();
+            }
+
+            
 
             Response.Redirect("stockViewer.aspx");
         }
