@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
+using System.Data;
 //using ClassControlLib; -> class lib 
 
 ///This class uses the ado.net sql classes to provide a connection to an Azure sql server database.
@@ -40,7 +41,6 @@ public class clsDataConnection
 
     public string GetDBName()
     {
-
         //array to store folder names
         string[] filePaths;
         //var to store index for path array
