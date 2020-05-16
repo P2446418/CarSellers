@@ -5,7 +5,6 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
-using System.Data;
 
 ///This class uses the ado.net sql classes to provide a connection to an sql server database.
 ///it is free for use by anybody so long as you give credit to the original author i.e me
@@ -32,15 +31,25 @@ namespace CarSellersClasses
 
         public clsDataConnection()
         {
-            //GetConString(GetDBName());
-            connectionString = GetConnectionString();
+            GetConString(GetDBName());
         }
 
-        private String GetConnectionString()
+        public clsDataConnection(string DBLocation)
         {
-            System.Net.WebClient client = new System.Net.WebClient();
-            string downloadString = client.DownloadString("http://localhost:5000");
-            return downloadString;
+            GetConString(DBLocation);
+        }
+
+
+        private string GetConString(string SomePath)
+        {
+            //build up the connection string for the sql server database Visual Studio 2010
+            //connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;User Instance=True";
+            //build up the connection string for the sql server database Visual Studio 2012
+            //connectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + GetDBName() + ";Integrated Security=True;Connect Timeout=30";
+            //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + GetDBName() + "\";Integrated Security=True;Connect Timeout=30";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"###\";Integrated Security=True;Connect Timeout=30";
+            connectionString = connectionString.Replace("###", SomePath);
+            return connectionString;
         }
 
         public string GetDBName()
