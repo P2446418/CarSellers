@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
+//using ClassControlLib; -> class lib 
 
 
 
@@ -35,7 +36,12 @@ public class clsDataConnection
         connectionString = GetConnectionString();
     }
 
-
+    private string GetConnectionString()
+    {
+        System.Net.WebClient client = new System.Net.WebClient();
+        string downloadString = client.DownloadString("http://localhost:5000/");
+        return downloadString;
+    }
 
 
 
@@ -195,7 +201,6 @@ public class clsDataConnection
         dataChannel.Fill(dataTable);
         //close the connection
         connectionToDB.Close();
-
         //return the result of the stored procedure
         return Convert.ToInt32(returnValue.Value);
     }
