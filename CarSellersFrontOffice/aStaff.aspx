@@ -14,7 +14,7 @@
             </div>
             <br />
             <asp:Label ID="StaffIDLabel" runat="server" Text="StaffID"></asp:Label>
-            <asp:TextBox ID="StaffIDTextBox" runat="server" ClientIDMode="AutoID"></asp:TextBox>
+            <asp:TextBox ID="StaffIDTextBox" runat="server"></asp:TextBox> <!--ClientIDMode="AutoID" -->
             <br />
             <br />
             FirstName :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="FirstNameTextBox" runat="server"></asp:TextBox>
