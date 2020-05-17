@@ -5,7 +5,10 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
-using System.Data;
+
+
+
+
 //using ClassControlLib; -> class lib 
 
 ///This class uses the ado.net sql classes to provide a connection to an Azure sql server database.
@@ -31,6 +34,11 @@ public class clsDataConnection
     {
         connectionString = GetConnectionString();
     }
+
+
+
+
+
 
     private string GetConnectionString()
     {
@@ -139,6 +147,7 @@ public class clsDataConnection
         return OldPath;
     }
 
+
     public void AddParameter(string ParamName, object ParamValue)
     ///public method allowing the addition of an sql parameter to the list of parameters
     ///it accepts two parameters the name of the parameter and its value
@@ -148,6 +157,7 @@ public class clsDataConnection
         //add the parameter to the list
         SQLParams.Add(AParam);
     }
+
 
     public Int32 Execute(string SProcName)
     {
@@ -185,6 +195,7 @@ public class clsDataConnection
         dataChannel.Fill(dataTable);
         //close the connection
         connectionToDB.Close();
+
         //return the result of the stored procedure
         return Convert.ToInt32(returnValue.Value);
     }
